@@ -22,3 +22,18 @@
 .fname:focus{
 	outline: none;
 }
+
+.dirwrap{
+	margin: 80px 40px;
+	display: flex;
+	width: 250px;
+	flex-wrap: wrap;
+}
+
+.dir{
+	border: 1px solid white;
+	width:50px;
+	height: 30px;
+	color : white;
+	margin: 10px;
+}

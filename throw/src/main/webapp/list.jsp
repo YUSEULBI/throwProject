@@ -5,8 +5,32 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="/throw/css/directory.css" rel="stylesheet">
 </head>
 <body>
-
+	
+	<div class="wrap">
+		<div class="dirwrap">
+			<div class="dir">파일</div>
+			<div class="dir">
+				파일
+			</div>
+			<div class="dir">
+				파일
+			</div>
+			<div class="dir">
+				파일
+			</div>
+			<div class="dir">
+				파일
+			</div>
+			<div class="dir">
+				파일
+			</div>
+		</div>
+	</div>
+	
+	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="/throw/js/list.js" type="text/javascript"></script>
 </body>
 </html>

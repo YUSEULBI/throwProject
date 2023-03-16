@@ -10,10 +10,11 @@
 <body>
 	<div class="wrap">
 		<div>
-			<input class="fname" type="text" placeholder="파일명">
+			<input class="dname" type="text" placeholder="파일명">
 		</div>
 	</div>
 
+	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="/throw/js/directory.js" type="text/javascript"></script>
 </body>
 </html>
