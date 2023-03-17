@@ -10,6 +10,14 @@ function dir_Print(){
 			success : (r)=>{
 				console.log('통신')
 				console.log(r)
+				html ='';
+				r.forEach((o,i)=>{
+					console.log(o.dname)
+					html += `
+							<div class="dir">${o.dname}</div>
+							`
+				})
+				document.querySelector('.dirwrap').innerHTML = html;
 				
 			}
 		})

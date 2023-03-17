@@ -11,22 +11,7 @@
 	
 	<div class="wrap">
 		<div class="dirwrap">
-			<div class="dir">파일</div>
-			<div class="dir">
-				파일
-			</div>
-			<div class="dir">
-				파일
-			</div>
-			<div class="dir">
-				파일
-			</div>
-			<div class="dir">
-				파일
-			</div>
-			<div class="dir">
-				파일
-			</div>
+			
 		</div>
 	</div>
 	

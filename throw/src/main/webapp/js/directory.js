@@ -17,6 +17,8 @@ document.addEventListener("keydown" , (e)=>{
 				console.log(r)
 				if (r=='true'){
 					console.log('디렉토리추가성공')
+					document.querySelector('.dname').value = '';
+					location.href="/throw/list.jsp";
 				}else{
 					console.log('디렉토리추가실패')
 				}
