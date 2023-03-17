@@ -14,11 +14,15 @@ function dir_Print(){
 				r.forEach((o,i)=>{
 					console.log(o.dname)
 					html += `
-							<div class="dir">${o.dname}</div>
+							<div onclick="dirselect(${o.dno})" class="dir">${o.dname}</div>
 							`
 				})
 				document.querySelector('.dirwrap').innerHTML = html;
 				
 			}
 		})
+}
+
+function dirselect(dno){
+	console.log('dno : '+dno)
 }
