@@ -5,17 +5,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="/throw/css/directory.css" rel="stylesheet">
+<link href="/throw/css/dirView.css" rel="stylesheet">
+<link href="/throw/css/dirList.css" rel="stylesheet">
 </head>
 <body>
 	<%@include file="/header.jsp" %>
 	<div class="wrap">
-		<div class="dnamediv">
-			<input class="dname" type="text" placeholder="파일명">
+		<div class="dirViewDiv">
+			<div class="dirwrap"></div>
 		</div>
 	</div>
-
 	
-	<script src="/throw/js/directory.js" type="text/javascript"></script>
+	
+	<script src="/throw/js/dirList.js" type="text/javascript"></script>
 </body>
 </html>

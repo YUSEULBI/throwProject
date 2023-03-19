@@ -15,52 +15,65 @@ import dao.DirectoryDao;
 import dto.dirDto;
 
 /**
- * Servlet implementation class Directories
+ * Servlet implementation class SubDirectories
  */
-@WebServlet("/directories")
-public class Directories extends HttpServlet {
+@WebServlet("/directories/sub")
+public class SubDirectories extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-   
-    public Directories() {
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public SubDirectories() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<dirDto> list = DirectoryDao.getInstance().getDirList();
-		System.out.println(list);
+		
+		
+		int dno = Integer.parseInt(request.getParameter("dno")); 
+		System.out.println("서블릿 dno : "+dno);
+		
+		ArrayList<dirDto> list = DirectoryDao.getInstance().getSubDirList(dno);
+		System.out.println("서블릿 list : "+list);
+		
 		ObjectMapper mapper = new ObjectMapper();
-		String jsonlist = mapper.writeValueAsString(list);
-		System.out.println("jsonlist : "+jsonlist);
+		String jsonList = mapper.writeValueAsString(list);
+		System.out.println("서블릿 jsonlist : "+jsonList);
+		
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json");
-		response.getWriter().print(jsonlist);
-		
+		response.getWriter().print(jsonList);
 	}
 
-	
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String dname = request.getParameter("dname");
-		System.out.println("dname : "+dname);
-		boolean result = DirectoryDao.getInstance().setDirectory(dname);
+		int dno = Integer.parseInt(request.getParameter("dno")); System.out.println("dno : "+dno);
+		String dname = request.getParameter("dname"); System.out.println("dname : "+dname);
+		
+		boolean result = DirectoryDao.getInstance().setSubDir(dno, dname);
 		response.getWriter().print(result);
+		
 		
 	}
 
-	
+	/**
+	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
+	 */
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		int dno = Integer.parseInt(request.getParameter("dno"));
-		String dname = request.getParameter("dname");
-		
-		boolean result = DirectoryDao.getInstance().updateDirName(dno, dname);
-		response.getWriter().print(result);
+		// TODO Auto-generated method stub
 	}
 
-	
+	/**
+	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
+	 */
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
