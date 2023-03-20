@@ -37,3 +37,24 @@ function dirselect(dno , dname){
 function addDir(){
 	location.href = "/throw/directory.jsp";
 }
+
+
+let startPoint = 0;
+let endPoint = 0;
+
+window.addEventListener("touchstart",(e)=>{
+	console.log("touchstart", e.touches[0].pageY);
+	startPoint = e.touches[0].pageY; // 터치가 시작되는 위치 저장
+})
+
+window.addEventListener("touchend",(e)=>{
+	console.log("touchend",e.changedTouches[0].pageY);
+	endPoint = e.changedTouches[0].pageY // 터치가 끝나는 위치 저장
+	if(startPoint>endPoint){
+		console.log("위로throw");
+		
+	}else if(startPoint < endPoint){
+		console.log("아래로swipe");
+		location.href="/throw/keywords.jsp"
+	}
+})
