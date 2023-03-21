@@ -41,5 +41,16 @@ public class KeywordDao extends Dao {
 		return list;
 	}
 	
-	
+	// 선택한 디렉토리에 키워드 추가
+	public boolean updateKeywordtoDir( int dno , int kno ) {
+		String sql = "update keyword set dno = ? where kno = ?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, dno);
+			ps.setInt(2, kno);
+			int count = ps.executeUpdate();
+			if ( count == 1 ) { return true; }
+		} catch (Exception e) { System.out.println(e);	}
+		return false;
+	}
 }

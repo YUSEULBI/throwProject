@@ -31,7 +31,6 @@ function dirselect(dno , dname){
 	console.log('dno : '+dno)
 	console.log("/throw/dirView.jsp?dno="+dno+"&dname="+dname)
 	location.href = "/throw/dirView.jsp?dno="+dno+"&dname="+dname;
-	
 }
 // 최상위 디렉토리추가
 function addDir(){

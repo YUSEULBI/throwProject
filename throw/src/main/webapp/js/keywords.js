@@ -17,6 +17,8 @@ function getTodayKeyword(){
 	})
 }
 
+
+
 let startPoint = 0;
 let endPoint = 0;
 

@@ -52,11 +52,13 @@ public class Keyword extends HttpServlet {
 		response.getWriter().print(result);
 	}
 
-	/**
-	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
-	 */
+	// 소속 디렉토리가 없는 키워드를 디렉토리에 추가
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		int dno = Integer.parseInt(request.getParameter("dno"));
+		int kno = Integer.parseInt(request.getParameter("kno"));
+		
+		boolean result = KeywordDao.getInstance().updateKeywordtoDir(dno, kno);
+		response.getWriter().print(result);
 	}
 
 	/**

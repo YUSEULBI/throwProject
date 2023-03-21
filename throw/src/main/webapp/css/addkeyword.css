@@ -1,0 +1,7 @@
+@charset "UTF-8";
+
+.movekeyword{
+/* 	display:flex; */
+/* 	justify-content:center; */
+	cursor: move;
+}

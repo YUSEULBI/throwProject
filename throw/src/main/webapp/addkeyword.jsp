@@ -6,12 +6,15 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 	<link href="/throw/css/directory.css" rel="stylesheet">
+	<link href="/throw/css/addkeyword.css" rel="stylesheet">
 </head>
 <body>
 	<%@include file="/header.jsp" %>
 	<div class="wrap">
 		<div class="dnamediv">
-			<input class="dname" type="text" placeholder="입력하세요">
+<!-- 			<div class="movekeyword"> -->
+				<input class="dname movekeyword" type="text" placeholder="입력하세요">
+<!-- 			</div> -->
 		</div>
 	</div>
 	
