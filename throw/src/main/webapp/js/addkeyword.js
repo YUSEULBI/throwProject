@@ -2,8 +2,8 @@
 let startPoint = 0;
 let endPoint = 0;
 
-//cno
-let cno = 0;
+//kno
+let kno = 0;
 
 // 터치
 window.addEventListener("touchstart",(e)=>{
@@ -37,8 +37,9 @@ document.addEventListener("keydown" , (e)=>{
 		//키워드추가
 		addKeyword();
 		// 디렉토리 파일선택
-		console.log("파일추가후 이동전 cno : "+cno)
-		//location.href="http://localhost:8080/throw/updateKeywordToDir.jsp?cno="+cno;
+		console.log("파일추가후 이동전 kno : "+kno)
+		console.log("http://localhost:8080/throw/updateKeywordToDir.jsp?kno="+kno)
+		location.href="http://localhost:8080/throw/updateKeywordToDir.jsp?kno="+kno;
 	}
 })
 
@@ -51,12 +52,13 @@ function addKeyword(){
 			url : "/throw/keyword" ,
 			method : "post" ,
 			data : { "keyword":keyword , "ktype":1  } ,
+			async : false,
 			success : (r)=>{
-				console.log("cno : "+r)
+				console.log("kno : "+r)
 				if (r != 0){
 					console.log('등록성공')
-					cno = r
-					console.log('등록성공후 전역변수 cno:'+cno)
+					kno = r
+					console.log('등록성공후 전역변수 kno:'+kno)
 				}
 			}
 		})

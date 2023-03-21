@@ -8,6 +8,10 @@
 </head>
 <body>
 	<%@include file="/header.jsp" %>
+	<%
+		int kno = Integer.parseInt(request.getParameter("kno"));
+	%>
+	<input type="hidden" class="kno" value="<%=kno%>">
 	<div class="wrap">
 		
 	</div>

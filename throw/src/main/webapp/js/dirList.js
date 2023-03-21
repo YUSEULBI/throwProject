@@ -1,8 +1,8 @@
 console.log('js연결')
 
-dir_Print();
+superDirPrint();
 
-function dir_Print(){
+function superDirPrint(){
 	
 	$.ajax({
 			url : "/throw/directories",
