@@ -48,7 +48,7 @@ public class Keyword extends HttpServlet {
 		int ktype = Integer.parseInt(request.getParameter("ktype")); System.out.println("ktype : "+ktype);
 		String keyword = request.getParameter("keyword");	System.out.println("keyword : "+keyword);
 		
-		boolean result = KeywordDao.getInstance().setKeyword(keyword, ktype);
+		int result = KeywordDao.getInstance().setKeyword(keyword, ktype);
 		response.getWriter().print(result);
 	}
 

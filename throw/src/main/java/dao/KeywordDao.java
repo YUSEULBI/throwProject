@@ -1,5 +1,6 @@
 package dao;
 
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import dto.KeywordDto;
@@ -11,16 +12,19 @@ public class KeywordDao extends Dao {
 	public static KeywordDao getInstance() { return dao;}
 	
 	// 키워드 저장
-	public boolean setKeyword( String keyword , int ktype ) {
+	public int setKeyword( String keyword , int ktype ) {
 		String sql = "insert into keyword( kcontent , ktype ) values( ? , ? );";
 		try {
-			ps = con.prepareStatement(sql);
+			ps = con.prepareStatement(sql , Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, keyword);
 			ps.setInt(2, ktype);
 			int count = ps.executeUpdate();
-			if ( count == 1 ) { return true;	}
+			rs = ps.getGeneratedKeys();
+			if ( count == 1 ) { 
+				if (rs.next()) {return rs.getInt(1);}
+			}
 		} catch (Exception e) { System.out.println(e);	}
-		return false;
+		return 0;
 	}
 	
 	// 오늘날짜 키워드 출력
