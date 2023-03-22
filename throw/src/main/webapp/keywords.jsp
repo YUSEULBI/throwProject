@@ -14,6 +14,10 @@
 			<div class="kdate dname">2023</div>
 			<div class="content"></div>
 		</div>
+		
+		<div class="deletebox">
+			삭제
+		</div>
 	</div>
 	
 	<script src="/throw/js/keywords.js" type="text/javascript"></script>

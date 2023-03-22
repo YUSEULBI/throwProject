@@ -3,6 +3,13 @@
 let dno = document.querySelector('.dno').value;
 let dname = document.querySelector('.dnamevalue').value;
 document.querySelector('.dname').value = dname;
+
+console.log("js실행시 dno : "+dno)
+if ( dno == 1 ){
+	document.querySelector('.dname').value = '최상위디렉토리'
+	document.querySelector('.dname').disabled="disabled"
+	
+}
 console.log("dno : "+dno)
 
 // 하위 디렉토리 출력
@@ -112,5 +119,27 @@ document.addEventListener("keydown" , (e)=>{
 				}
 			}
 		})
+	}
+})
+
+
+
+let startPoint = 0;
+let endPoint = 0;
+
+window.addEventListener("touchstart",(e)=>{
+	console.log("touchstart", e.touches[0].pageY);
+	startPoint = e.touches[0].pageY; // 터치가 시작되는 위치 저장
+})
+
+window.addEventListener("touchend",(e)=>{
+	console.log("touchend",e.changedTouches[0].pageY);
+	endPoint = e.changedTouches[0].pageY // 터치가 끝나는 위치 저장
+	if(startPoint>endPoint){
+		console.log("위로throw");
+		
+	}else if(startPoint < endPoint){
+		console.log("아래로swipe");
+		location.href="/throw/keywords.jsp"
 	}
 })

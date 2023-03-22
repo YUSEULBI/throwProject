@@ -57,4 +57,50 @@ public class KeywordDao extends Dao {
 		} catch (Exception e) { System.out.println(e);	}
 		return false;
 	}
+	
+	// 선택한 키워드 삭제
+	public boolean deleteKeyword( int kno ) {
+		String sql = "delete from keyword where kno = "+kno;
+		try {
+			ps = con.prepareStatement(sql);
+			int count = ps.executeUpdate();
+			if ( count == 1 ) {return true;}
+		} catch (Exception e) { System.out.println(e);	}
+		return false;
+	}
+	
+	// 키워드명 변경
+	public boolean updateKeywordContent( String keyword , int kno ) {
+		String sql = "update keyword set kcontent = '"+keyword+"' where kno = "+kno+" ";
+		System.out.println("sql : "+sql);
+		try {
+			ps = con.prepareStatement(sql);
+			int count = ps.executeUpdate();
+			if ( count == 1 ) {return true;}
+		} catch (Exception e) { System.out.println(e);	}
+		return false;
+	}
+	
+	// 키워드번호로 키워드1개 dto 반환
+	public KeywordDto getKeyword( int kno ) {
+		KeywordDto dto = new KeywordDto();
+		String sql = "select * from keyword where kno = "+kno;
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if ( rs.next()) {
+				dto = new KeywordDto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5));
+				System.out.println(dto);
+			}
+		} catch (Exception e) { System.out.println(e);	}
+		return dto;
+	}
 }
+
+
+
+
+
+
+
+

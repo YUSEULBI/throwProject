@@ -33,12 +33,24 @@ public class Keyword extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<KeywordDto> list = KeywordDao.getInstance().getTodayKeyword();
-		ObjectMapper mapper = new ObjectMapper();
-		String jsonlist = mapper.writeValueAsString(list);
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("applicaion/json");
-		response.getWriter().print(jsonlist);
+		int gettype = Integer.parseInt(request.getParameter("gettype"));
+		System.out.println("gettype : "+gettype);
+		if ( gettype == 1 ) {
+			ArrayList<KeywordDto> list = KeywordDao.getInstance().getTodayKeyword();
+			ObjectMapper mapper = new ObjectMapper();
+			String jsonlist = mapper.writeValueAsString(list);
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("applicaion/json");
+			response.getWriter().print(jsonlist);
+		}else if( gettype == 2 ) {
+			int kno = Integer.parseInt(request.getParameter("kno"));
+			KeywordDto dto = KeywordDao.getInstance().getKeyword(kno);
+			ObjectMapper mapper = new ObjectMapper();
+			String jsondto = mapper.writeValueAsString(dto);
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("applicaion/json");
+			response.getWriter().print(jsondto);
+		}
 	}
 
 	/**
@@ -52,12 +64,24 @@ public class Keyword extends HttpServlet {
 		response.getWriter().print(result);
 	}
 
-	// 소속 디렉토리가 없는 키워드를 디렉토리에 추가
+	
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int dno = Integer.parseInt(request.getParameter("dno"));
+		request.setCharacterEncoding("UTF-8");
 		int kno = Integer.parseInt(request.getParameter("kno"));
-		
-		boolean result = KeywordDao.getInstance().updateKeywordtoDir(dno, kno);
+		System.out.println("kno : "+kno);
+		boolean result = false;
+		int puttype = Integer.parseInt(request.getParameter("puttype"));
+		System.out.println("puttype : "+puttype);
+		if (puttype == 1) { // 소속 디렉토리가 없는 키워드를 디렉토리에 추가
+			int dno = Integer.parseInt(request.getParameter("dno"));
+			System.out.println("dno : "+dno);
+			result = KeywordDao.getInstance().updateKeywordtoDir(dno, kno);
+		}else if ( puttype == 2  ) { // 키워드명 변경
+			String keyword = request.getParameter("keyword");
+			System.out.println("keyword : "+keyword);
+			result = KeywordDao.getInstance().updateKeywordContent(keyword, kno);
+			System.out.println("result : "+result);
+		}
 		response.getWriter().print(result);
 	}
 
@@ -65,7 +89,9 @@ public class Keyword extends HttpServlet {
 	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
 	 */
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		int kno = Integer.parseInt( request.getParameter("kno") );
+		boolean result = KeywordDao.getInstance().deleteKeyword(kno);
+		response.getWriter().print(result);
 	}
 
 }

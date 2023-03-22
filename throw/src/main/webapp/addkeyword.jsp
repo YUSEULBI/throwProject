@@ -10,6 +10,10 @@
 </head>
 <body>
 	<%@include file="/header.jsp" %>
+	<%  
+		String kno = request.getParameter("kno");
+	%>
+	<input type="hidden" class="kno" value="<%=kno%>">
 	<div class="wrap">
 		<div class="dnamediv">
 <!-- 			<div class="movekeyword"> -->

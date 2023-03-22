@@ -31,7 +31,7 @@ function updateKeywordtoDir(){
 	$.ajax({
 		url : "/throw/keyword",
 		method : "put",
-		data : { "dno":dno , "kno":kno } ,
+		data : { "dno":dno , "kno":kno , "puttype":1 } , //puttype 1번 키워드를디렉토리에 넣기 2번 키워드수정하기
 		success : (r)=>{
 			console.log(r)
 			if( r =='true'){
