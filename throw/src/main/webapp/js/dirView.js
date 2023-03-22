@@ -139,23 +139,25 @@ document.addEventListener("keydown" , (e)=>{
 	}
 })
 
-
-
-let startPoint = 0;
-let endPoint = 0;
+//함수실행시간 체크용
+let start = new Date();
+let end = new Date();
+console.log(end - start)
+	
 
 window.addEventListener("touchstart",(e)=>{
 	console.log("touchstart", e.touches[0].pageY);
 	startPoint = e.touches[0].pageY; // 터치가 시작되는 위치 저장
+	start = new Date();
 })
 
 window.addEventListener("touchend",(e)=>{
 	console.log("touchend",e.changedTouches[0].pageY);
 	endPoint = e.changedTouches[0].pageY // 터치가 끝나는 위치 저장
-	if(startPoint>endPoint){
+	if( (startPoint-endPoint)>200 ){
 		console.log("위로throw");
 		
-	}else if(startPoint < endPoint){
+	}else if( (startPoint - endPoint)<-200 ){
 		console.log("아래로swipe");
 		location.href="/throw/keywords.jsp"
 	}
