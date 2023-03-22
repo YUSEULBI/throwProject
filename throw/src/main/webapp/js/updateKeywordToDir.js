@@ -22,9 +22,13 @@ function superDirPrint(){
 		})
 }
 
+function dirselect(dno,dname){
+	
+	updateKeywordtoDir( dno , dname )
+}
 
 // 소속디렉토리가 없는 키워드를 디렉토리에 넣기
-function updateKeywordtoDir(){
+function updateKeywordtoDir( dno , dname ){
 	$.ajax({
 		url : "/throw/keyword",
 		method : "put",

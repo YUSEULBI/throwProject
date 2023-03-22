@@ -95,6 +95,23 @@ public class KeywordDao extends Dao {
 		} catch (Exception e) { System.out.println(e);	}
 		return dto;
 	}
+	
+	// 선택한 dir의 하위키워드 리스트 출력
+	public ArrayList<KeywordDto> getSelectDirKeyword( int dno ){
+		ArrayList<KeywordDto> list = new ArrayList<>();
+		String sql = "select * from keyword where dno = "+dno;
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while ( rs.next() ) {
+				System.out.println("rs담기");
+				KeywordDto dto = new KeywordDto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5));
+				System.out.println(dto);
+				list.add(dto);
+			}
+		} catch (Exception e) {System.out.println("선택디렉토리 키워드리스트출력 예외 : "+e);		}
+		return list;
+	}
 }
 
 

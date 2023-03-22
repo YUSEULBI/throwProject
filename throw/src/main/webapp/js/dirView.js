@@ -34,10 +34,27 @@ function subDirPrint(){
 						<div onclick="addSubDir('${dno}','${dname}')" class="addDirBtn"></div>
 					</div>`
 			document.querySelector('.content').innerHTML = html
+			getTodayKeyword();
 		}
 	})
 }
-
+// 하위키워드 출력
+function getTodayKeyword(){
+	$.ajax({
+		url : "/throw/keyword",
+		method : "get",
+		data : { "gettype":3 , "dno":dno } ,
+		success:(r)=>{
+			console.log(r)
+			let html = ''
+			r.forEach((o,i)=>{
+				html += `<div onclick="keywordClick(${o.kno})" class="dir dir${o.kno}">${o.kcontent}</div>`
+			})
+			
+			document.querySelector('.content').innerHTML += html
+		}
+	})
+}
 
 // 하위디렉토리 새로만들기 jsp로 이동
 function addSubDir( dno , dname ){

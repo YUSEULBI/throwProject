@@ -35,21 +35,23 @@ public class Keyword extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int gettype = Integer.parseInt(request.getParameter("gettype"));
 		System.out.println("gettype : "+gettype);
-		if ( gettype == 1 ) {
+		ObjectMapper mapper = new ObjectMapper();
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("applicaion/json");
+		if ( gettype == 1 ) { // 오늘날짜 키워드dto리스트 반환
 			ArrayList<KeywordDto> list = KeywordDao.getInstance().getTodayKeyword();
-			ObjectMapper mapper = new ObjectMapper();
 			String jsonlist = mapper.writeValueAsString(list);
-			response.setCharacterEncoding("UTF-8");
-			response.setContentType("applicaion/json");
 			response.getWriter().print(jsonlist);
-		}else if( gettype == 2 ) {
+		}else if( gettype == 2 ) { // 선택한 키워드 dto 반환
 			int kno = Integer.parseInt(request.getParameter("kno"));
 			KeywordDto dto = KeywordDao.getInstance().getKeyword(kno);
-			ObjectMapper mapper = new ObjectMapper();
 			String jsondto = mapper.writeValueAsString(dto);
-			response.setCharacterEncoding("UTF-8");
-			response.setContentType("applicaion/json");
 			response.getWriter().print(jsondto);
+		}else if( gettype == 3 ) { // 선택한 디렉토리 안의 키워드dto리스트 반환
+			int dno = Integer.parseInt(request.getParameter("dno"));
+			ArrayList<KeywordDto> list =  KeywordDao.getInstance().getSelectDirKeyword(dno);
+			String jsonlist = mapper.writeValueAsString(list);
+			response.getWriter().print(jsonlist);
 		}
 	}
 
