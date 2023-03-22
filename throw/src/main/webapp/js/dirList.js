@@ -14,7 +14,7 @@ function superDirPrint(){
 				r.forEach((o,i)=>{
 					console.log(o.dname)
 					html += `
-							<div onclick="dirselect('${o.dno}','${o.dname}')" class="dir">${o.dname}</div>
+							<div onclick="dirselect('${o.dno}','${o.dname}')" class="dir , dir${o.dno}">${o.dname}</div>
 							`
 				})
 				html += `<div class="dir">	
@@ -25,13 +25,57 @@ function superDirPrint(){
 			}
 		})
 }
-
+let savedno = 0;
+let savedname = null;
+let click = 0;
+console.log( "click : "+click)
 // 디렉토리 선택시
 function dirselect(dno , dname){
 	console.log('dno : '+dno)
-	console.log("/throw/dirView.jsp?dno="+dno+"&dname="+dname)
-	location.href = "/throw/dirView.jsp?dno="+dno+"&dname="+dname;
+	// 이미 클릭된 경우 다시 클릭 하면 링크 이동
+	console.log ('click : '+click)
+	if(click == 0){
+	
+		//클릭시 색바뀌고 휴지통 나오기
+		document.querySelector('.deletebox').style.display = 'block'
+		document.querySelector('.dir'+dno).style.backgroundColor = 'white'
+		document.querySelector('.dir'+dno).style.Color = 'black'
+		savedno = dno
+		savedname = dname
+		click = 1;
+		return;
+		//파일 이동
+	}else if ( click == 1 ){
+		console.log("/throw/dirView.jsp?dno="+dno+"&dname="+dname)
+		location.href = "/throw/dirView.jsp?dno="+dno+"&dname="+dname;
+		return;
+	}
+	return;
 }
+
+// 휴지통 클릭
+let deletebox = document.querySelector('.deletebox')
+deletebox.addEventListener('click' , (e)=>{
+	console.log('휴지통클릭')
+	$.ajax({
+		url : "/throw/directories",
+		method : "delete",
+		data : {"dno":savedno },
+		success : (r)=>{
+			console.log('통신')
+			console.log(r)
+			if (r=='true'){
+				console.log('디렉토리 삭제성공')
+				location.href="/throw/dirList.jsp";
+			}else{
+				console.log('디렉토리 삭제실패')
+			}
+		}
+	})
+})
+
+
+
 // 최상위 디렉토리추가
 function addDir(){
 	location.href = "/throw/directory.jsp";

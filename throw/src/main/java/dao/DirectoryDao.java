@@ -78,4 +78,15 @@ public class DirectoryDao extends Dao {
 		} catch (Exception e) {System.out.println(e);	}
 		return false;
 	}
+	
+	//파일삭제
+	public boolean deleteDir( int dno ) {
+		String sql = "delete from directories where dno = "+dno;
+		try {
+			ps = con.prepareStatement(sql);
+			int count = ps.executeUpdate();
+			if ( count == 1 ) { return true;	}
+		} catch (Exception e) {System.out.println(e);	}
+		return false;
+	}
 }

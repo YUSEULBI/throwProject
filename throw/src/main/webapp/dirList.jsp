@@ -16,6 +16,9 @@
 		</div>
 	</div>
 	
+	<div class="deletebox">
+		삭제
+	</div>
 	
 	<script src="/throw/js/dirList.js" type="text/javascript"></script>
 </body>

@@ -62,7 +62,14 @@ public class Directories extends HttpServlet {
 
 	
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		request.setCharacterEncoding("UTF-8");
+		int dno = Integer.parseInt(request.getParameter("dno"));
+		System.out.println("dno : "+dno);
+		
+		boolean result = DirectoryDao.getInstance().deleteDir(dno);
+		System.out.println("result : "+result);
+		response.getWriter().print(result);
+		
 	}
 
 }
