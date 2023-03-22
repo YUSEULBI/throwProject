@@ -2,24 +2,21 @@
 let kno = document.querySelector('.kno').value
 
 // 최상위디렉토리 출력
+superDirPrint();
 function superDirPrint(){
 	$.ajax({
-			url : "/throw/directories",
+			url : "/throw/directories/sub",
 			method : "get" ,
+			data : {"dno":1} ,
 			success : (r)=>{
 				console.log('통신')
 				console.log(r)
-				html ='';
-				r.forEach((o,i)=>{
-					console.log(o.dname)
-					html += `
-							<div onclick="dirselect('${o.dno}','${o.dname}')" class="dir">${o.dname}</div>
-							`
-				})
-				html += `<div class="dir">	
-						<div onclick="addDir()" class="addDirBtn"></div>
-					</div>`
-				document.querySelector('.dirwrap').innerHTML = html;
+				html = ''
+			r.forEach((o,i)=>{
+				html += `<div onclick="dirselect('${o.dno}','${o.dname}')" class="dir , dir${o.dno}">${o.dname}</div>`
+			})
+			
+			document.querySelector('.content').innerHTML = html
 				
 			}
 		})

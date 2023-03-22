@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="/throw/css/dirView.css" rel="stylesheet">
 </head>
 <body>
 	<%@include file="/header.jsp" %>
@@ -13,7 +14,10 @@
 	%>
 	<input type="hidden" class="kno" value="<%=kno%>">
 	<div class="wrap">
-		
+		<div class="dirwrap">
+			<div class="content">
+			</div>
+		</div>
 	</div>
 	
 	
