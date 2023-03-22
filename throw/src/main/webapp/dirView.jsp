@@ -31,7 +31,13 @@
 				
 			</div>
 		</div>
+		
+		<div class="deletebox">
+			삭제
+		</div>
 	</div>
+	
+	
 	
 	<script src="/throw/js/dirView.js" type="text/javascript"></script>
 </body>

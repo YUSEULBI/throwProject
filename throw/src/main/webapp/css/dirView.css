@@ -46,3 +46,15 @@
 	background-size: 50px;
 	background-repeat: no-repeat;
 }
+
+.deletebox{
+	background-color: white;
+	border: 1px solid white;
+	width:100%;
+	position: sticky;
+	bottom: 0;
+	font-size: 50px;
+	padding: 20px;
+	text-align: center;
+	display: none;
+}

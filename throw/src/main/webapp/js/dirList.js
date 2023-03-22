@@ -39,7 +39,7 @@ function dirselect(dno , dname){
 		//클릭시 색바뀌고 휴지통 나오기
 		document.querySelector('.deletebox').style.display = 'block'
 		document.querySelector('.dir'+dno).style.backgroundColor = 'white'
-		document.querySelector('.dir'+dno).style.Color = 'black'
+		document.querySelector('.dir'+dno).style.color = 'black'
 		savedno = dno
 		savedname = dname
 		click = 1;

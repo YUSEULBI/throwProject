@@ -10,8 +10,9 @@ public class DirectoryDao extends Dao {
 	private DirectoryDao() {	}
 	public static DirectoryDao getInstance() {return dao;}
 	
+	//최상위폴더에 저장
 	public boolean setDirectory( String dname ) {
-		String sql = "insert into directories(dname) values(?);";
+		String sql = "insert into directories(dname , parent_dno) values(? , 1);";
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, dname);
@@ -24,7 +25,7 @@ public class DirectoryDao extends Dao {
 	// 최상위 디렉토리 출력
 	public ArrayList<dirDto> getDirList(){
 		ArrayList<dirDto> list = new ArrayList<>();
-		String sql = "select * from directories where parent_dno is null;";
+		String sql = "select * from directories where parent_dno = 1";
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();

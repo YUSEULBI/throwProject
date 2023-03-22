@@ -1,4 +1,5 @@
 getTodayKeyword();
+
 function getTodayKeyword(){
 	$.ajax({
 		url : "/throw/keyword",
@@ -32,7 +33,7 @@ window.addEventListener("touchend",(e)=>{
 	endPoint = e.changedTouches[0].pageY // 터치가 끝나는 위치 저장
 	if(startPoint>endPoint){
 		console.log("위로throw");
-		location.href="/throw/dirList.jsp";
+		location.href = "/throw/dirView.jsp?dno=1&dname=superdir";
 	}else if(startPoint < endPoint){
 		console.log("아래로swipe");
 		location.href="/throw/addkeyword.jsp"
