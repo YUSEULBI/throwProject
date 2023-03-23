@@ -69,6 +69,8 @@ public class Keyword extends HttpServlet {
 	
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		String skno = request.getParameter("kno");
+		System.out.println("skno : "+skno);
 		int kno = Integer.parseInt(request.getParameter("kno"));
 		System.out.println("kno : "+kno);
 		boolean result = false;

@@ -21,5 +21,6 @@
 	</div>
 	
 	<script src="/throw/js/keywords.js" type="text/javascript"></script>
+	<script src="/throw/js/commonKeywordDir.js" type="text/javascript"></script>
 </body>
 </html>

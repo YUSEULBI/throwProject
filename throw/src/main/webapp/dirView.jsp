@@ -40,5 +40,6 @@
 	
 	
 	<script src="/throw/js/dirView.js" type="text/javascript"></script>
+	<script src="/throw/js/commonKeywordDir.js" type="text/javascript"></script>
 </body>
 </html>

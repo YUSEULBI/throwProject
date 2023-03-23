@@ -34,16 +34,16 @@ function subDirPrint(){
 						<div onclick="addSubDir('${dno}','${dname}')" class="addDirBtn"></div>
 					</div>`
 			document.querySelector('.content').innerHTML = html
-			getTodayKeyword();
+			getsubKeyword();
 		}
 	})
 }
 // 하위키워드 출력
-function getTodayKeyword(){
+function getsubKeyword(){
 	$.ajax({
 		url : "/throw/keyword",
 		method : "get",
-		data : { "gettype":3 , "dno":dno } ,
+		data : { "gettype":3 , "dno":dno } , // gettype : 선택한 디렉토리 안의 키워드dto리스트 반환
 		success:(r)=>{
 			console.log(r)
 			let html = ''
