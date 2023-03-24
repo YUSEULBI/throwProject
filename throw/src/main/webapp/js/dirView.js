@@ -139,24 +139,19 @@ document.addEventListener("keydown" , (e)=>{
 	}
 })
 
-//함수실행시간 체크용
-let start = new Date();
-let end = new Date();
-console.log(end - start)
+
+
+
+function swipeup(){
+	console.log("위로throw");
+	location.href = "/throw/dirView.jsp?dno=1&dname=null";
+}
+
+function swipedown(){
+	console.log("아래로swipe");
+	location.href="/throw/keywords.jsp"
+}
+
+function longdrag(){
 	
-
-window.addEventListener("touchstart",(e)=>{
-
-	start = new Date();
-})
-
-window.addEventListener("touchend",(e)=>{
-
-	if( (startPoint-endPoint)>200 ){
-		console.log("위로throw");
-		
-	}else if( (startPoint - endPoint)<-200 ){
-		console.log("아래로swipe");
-		location.href="/throw/keywords.jsp"
-	}
-})
+}
