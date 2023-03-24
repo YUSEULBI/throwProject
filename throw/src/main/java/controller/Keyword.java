@@ -40,7 +40,9 @@ public class Keyword extends HttpServlet {
 		response.setContentType("applicaion/json");
 		if ( gettype == 1 ) { // 오늘날짜 키워드dto리스트 반환
 			ArrayList<KeywordDto> list = KeywordDao.getInstance().getTodayKeyword();
+			System.out.println("list : "+list);
 			String jsonlist = mapper.writeValueAsString(list);
+			System.out.println("jsonlist : "+jsonlist);
 			response.getWriter().print(jsonlist);
 		}else if( gettype == 2 ) { // 선택한 키워드 dto 반환
 			int kno = Integer.parseInt(request.getParameter("kno"));
@@ -52,6 +54,9 @@ public class Keyword extends HttpServlet {
 			ArrayList<KeywordDto> list =  KeywordDao.getInstance().getSelectDirKeyword(dno);
 			String jsonlist = mapper.writeValueAsString(list);
 			response.getWriter().print(jsonlist);
+		}else if ( gettype == 4 ) { // 오늘 날짜 출력
+			String today = KeywordDao.getInstance().getToday();
+			response.getWriter().print(today);
 		}
 	}
 

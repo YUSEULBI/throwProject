@@ -45,6 +45,17 @@ public class KeywordDao extends Dao {
 		return list;
 	}
 	
+	// 오늘날짜 출력
+	public String getToday() {
+		String sql = "select curdate()";
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if ( rs.next() ) { return rs.getString(1); }
+		} catch (Exception e) {System.out.println("오늘날짜출력 예외 : "+e);		}
+		return null;
+	}
+	
 	// 선택한 디렉토리에 키워드 추가
 	public boolean updateKeywordtoDir( int dno , int kno ) {
 		String sql = "update keyword set dno = ? where kno = ?";

@@ -1,5 +1,21 @@
 getTodayKeyword();
 let knolist = []
+let savekno = 0 //키워드 삭제, 키워드수정페이지 이동용 전역변수
+let deletebox = document.querySelector('.deletebox') //휴지통 전역변수
+
+// 오늘 날짜
+function getToday(){
+	$.ajax({
+		url : "/throw/keyword",
+		method : "get",
+		data : { "gettype":4 } ,
+		success:(r)=>{
+			console.log(r)
+			document.querySelector('.kdate').innerHTML = r
+		}
+	})
+}
+
 // 오늘 생성한 키워드 출력
 function getTodayKeyword(){
 	$.ajax({
@@ -8,8 +24,6 @@ function getTodayKeyword(){
 		data : { "gettype":1 } ,
 		success:(r)=>{
 			console.log(r)
-			console.log(r[0].kdate)
-			document.querySelector('.kdate').innerHTML = r[0].kdate
 			let html = ''
 			r.forEach((o,i)=>{
 				knolist.push(o.kno);
@@ -21,8 +35,7 @@ function getTodayKeyword(){
 	})
 }
 
-let savekno = 0 //키워드 삭제, 키워드수정페이지 이동용 전역변수
-let deletebox = document.querySelector('.deletebox') //휴지통 전역변수
+
 
 // 키워드를 선택했을 때
 function keywordClick(kno){
@@ -98,7 +111,7 @@ deletebox.addEventListener("click",(e)=>{
 	
 function swipeup(){
 	console.log("위로throw");
-	location.href = "/throw/dirView.jsp?dno=1&dname=superdir";
+	location.href = "/throw/dirView.jsp?dno=1&dname=null";
 }
 
 function swipedown(){
