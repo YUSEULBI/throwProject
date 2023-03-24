@@ -93,35 +93,20 @@ deletebox.addEventListener("click",(e)=>{
 	})
 })
 
-// y좌표
-let startPoint = 0;
-let endPoint = 0;
 
-//함수실행시간 체크용
-let start = new Date();
-let end = new Date();
-console.log(end - start)
+
 	
+function swipeup(){
+	console.log("위로throw");
+	location.href = "/throw/dirView.jsp?dno=1&dname=superdir";
+}
 
-window.addEventListener("touchstart",(e)=>{
-	console.log("touchstart", e.touches[0].pageY);
-	startPoint = e.touches[0].pageY; // 터치가 시작되는 위치 저장
-	start = new Date();
-})
+function swipedown(){
+	console.log("아래로swipe");
+	location.href="/throw/addkeyword.jsp"
+}
 
-window.addEventListener("touchend",(e)=>{
-	console.log("touchend",e.changedTouches[0].pageY);
-	endPoint = e.changedTouches[0].pageY // 터치가 끝나는 위치 저장
-	end = new Date();
-	if((startPoint-endPoint)>200){
-		console.log("위로throw");
-		location.href = "/throw/dirView.jsp?dno=1&dname=superdir";
-	}else if((startPoint - endPoint)<-200){
-		console.log("아래로swipe");
-		location.href="/throw/addkeyword.jsp"
-	}
-	if ( (end - start)>800 ){
-		location.href="/throw/addkeyword.jsp?kno="+savekno
-	}
-	
-})
+function longdrag(){
+	location.href="/throw/addkeyword.jsp?kno="+savekno
+}
+

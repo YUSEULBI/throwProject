@@ -1,6 +1,4 @@
 
-let startPoint = 0;
-let endPoint = 0;
 
 //kno
 let kno = document.querySelector('.kno').value;
@@ -21,38 +19,36 @@ if ( kno > 0 ){ // 키워드 수정
 }
 console.log("kno : "+kno)	
 
-// 터치
-window.addEventListener("touchstart",(e)=>{
-	console.log("touchstart", e.touches[0].pageY);
-	startPoint = e.touches[0].pageY; // 터치가 시작되는 위치 저장
-})
 
-window.addEventListener("touchend",(e)=>{
-	console.log("touchend",e.changedTouches[0].pageY);
-	endPoint = e.changedTouches[0].pageY // 터치가 끝나는 위치 저장
-	if(startPoint>endPoint){
-		console.log("위로throw");
-		let keyword = document.querySelector('.dname').value
-		if( keyword == '' ){
+
+function swipeup(){
+	console.log("위로swipe");
+	let keyword = document.querySelector('.dname').value
+	if( keyword == '' ){
+		location.href="/throw/keywords.jsp"
+	}else{
+		if ( kno == 0 ){ // 키워드 생성
+			addKeyword();
 			location.href="/throw/keywords.jsp"
 		}else{
-			if ( kno == 0 ){ // 키워드 생성
-				addKeyword();
+			// 키워드수정
+			console.log( "kno :"+ kno )
+			if ( updateKeyword() ){
 				location.href="/throw/keywords.jsp"
-			}else{
-				// 키워드수정
-				console.log( "kno :"+ kno )
-				if ( updateKeyword() ){
-					location.href="/throw/keywords.jsp"
-				}
-
 			}
+
 		}
-	}else if(startPoint < endPoint){
-		console.log("아래로swipe");
-		
 	}
-})
+}
+
+function swipedown(){
+	console.log("아래로swipe");
+}
+
+function longdrag(){
+	console.log('0.8초 이상 드래그')
+}
+
 
 // 엔터
 document.addEventListener("keydown" , (e)=>{
