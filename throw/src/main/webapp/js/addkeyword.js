@@ -50,33 +50,28 @@ function longdrag(){
 }
 
 
-// 엔터
-document.addEventListener("keydown" , (e)=>{
-	console.log(e.keyCode)
-	if ( e.keyCode == 13 ){
-		console.log('enter를 누름')
-		
-		if ( kno == 0 ){ // 키워드생성
-			//키워드생성
-			if ( addKeyword() ){
-				// 디렉토리에 넣기 페이지로
-				console.log("키워드 추가후 이동전 kno : "+kno)
-				location.href="http://localhost:8080/throw/updateKeywordToDir.jsp?kno="+kno;
-			}
-		}else{
-			//키워드수정
-			console.log( '키워드수정성공했는지' )
-			console.log( updateKeyword() )
-			if ( updateKeyword() ){
-					// 디렉토리에 넣기 페이지로
-					console.log("키워드 수정후 이동전 kno : "+kno)
-					location.href="http://localhost:8080/throw/updateKeywordToDir.jsp?kno="+kno;
-			}
-			
-		}
-	}
-})
 
+// enter
+function keydownEnter(){
+	if ( kno == 0 ){ // 키워드생성
+		
+		if ( addKeyword() ){//키워드생성
+			// 디렉토리에 넣기 페이지로
+			console.log("키워드 추가후 이동전 kno : "+kno)
+			location.href="http://localhost:8080/throw/updateKeywordToDir.jsp?kno="+kno;
+		}
+	}else{
+		
+		console.log( '키워드수정성공했는지' )
+		console.log( updateKeyword() )
+		if ( updateKeyword() ){//키워드수정
+				// 디렉토리에 넣기 페이지로
+				console.log("키워드 수정후 이동전 kno : "+kno)
+				location.href="http://localhost:8080/throw/updateKeywordToDir.jsp?kno="+kno;
+		}
+		
+	}
+}
 
 
 // 키워드추가 

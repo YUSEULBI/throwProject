@@ -20,21 +20,27 @@ window.addEventListener("touchstart",(e)=>{
 	start = new Date();
 })
 
+// 터치가 끝나면
 window.addEventListener("touchend",(e)=>{
 	console.log("touchend",e.changedTouches[0].pageY);
 	endPoint = e.changedTouches[0].pageY // 터치가 끝나는 위치 저장
 	end = new Date();
+	
+	// 위로 스와이프(간격 200)
+	if((startPoint-endPoint)>200){	swipeup();	}
+	// 아래로 스와이프(간격 200)
+	else if((startPoint - endPoint)<-200){ 	swipedown(); }
+	// 드래그 0.8초
+	if ( (end - start)>800 ){ longdrag(); }
 })
 
-window.addEventListener("touchend",(e)=>{
 
-	if((startPoint-endPoint)>200){
-		swipeup();
-	}else if((startPoint - endPoint)<-200){
-		swipedown();
+
+// 엔터
+document.addEventListener("keydown" , (e)=>{
+	console.log(e.keyCode)
+	if ( e.keyCode == 13 ){ 
+		console.log('enter를 누름')
+		keydownEnter()		
 	}
-	if ( (end - start)>800 ){
-		longdrag();
-	}
-	
 })
