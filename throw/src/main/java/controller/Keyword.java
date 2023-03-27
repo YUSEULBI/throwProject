@@ -55,7 +55,8 @@ public class Keyword extends HttpServlet {
 			String jsonlist = mapper.writeValueAsString(list);
 			response.getWriter().print(jsonlist);
 		}else if ( gettype == 4 ) { // 오늘 날짜 출력
-			String today = KeywordDao.getInstance().getToday();
+			String today = (String)KeywordDao.getInstance().getToday();
+			System.out.println("서블릿 get today : "+today);
 			response.getWriter().print(today);
 		}
 	}

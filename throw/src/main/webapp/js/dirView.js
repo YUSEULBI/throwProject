@@ -1,5 +1,6 @@
 
 // 디렉토리 제목 출력
+	//jsp에서 url dno,dname 가져오기
 let dno = document.querySelector('.dno').value;
 let dname = document.querySelector('.dnamevalue').value;
 document.querySelector('.titleinput').value = dname;
@@ -105,6 +106,7 @@ let savedno = 0; // dno 전역변수 저장
 let savedname = null; // dname 전역변수 저장
 let click = 0;	// 클릭했는지 상태확인용 전역변수
 console.log( "click : "+click)
+let deletebox = document.querySelector('.deletebox')
 
 // 디렉토리 선택시 이동
 function dirselect(dno , dname){
@@ -113,7 +115,7 @@ function dirselect(dno , dname){
 }
 
 // 휴지통 클릭
-let deletebox = document.querySelector('.deletebox')
+
 
 deletebox.addEventListener('click' , (e)=>{
 		console.log('휴지통클릭')

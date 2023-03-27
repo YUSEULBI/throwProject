@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import dao.DirectoryDao;
-import dto.dirDto;
+import dto.DirDto;
 
 /**
  * Servlet implementation class SubDirectories
@@ -38,7 +38,7 @@ public class SubDirectories extends HttpServlet {
 		int dno = Integer.parseInt(request.getParameter("dno")); 
 		System.out.println("서블릿 dno : "+dno);
 		
-		ArrayList<dirDto> list = DirectoryDao.getInstance().getDirList(dno);
+		ArrayList<DirDto> list = DirectoryDao.getInstance().getDirList(dno);
 		System.out.println("서블릿 list : "+list);
 		
 		ObjectMapper mapper = new ObjectMapper();

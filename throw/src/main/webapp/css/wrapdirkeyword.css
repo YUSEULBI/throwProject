@@ -68,7 +68,7 @@ input:focus {outline:none;}
  	user-select: all;
 }
 
-/*---------디렉토리,키워드구역----------*/
+/*---------공통구역(디렉토리,키워드)----------*/
 .boxarea{
 	width: 100%;
 	height: 90%;

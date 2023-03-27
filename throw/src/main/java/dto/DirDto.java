@@ -1,16 +1,16 @@
 package dto;
 
-public class dirDto {
+public class DirDto {
 	
 	private int dno;
 	private String dname;
 	private int parent_dno;
 	
-	public dirDto() {
+	public DirDto() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public dirDto(int dno, String dname, int parent_dno) {
+	public DirDto(int dno, String dname, int parent_dno) {
 		super();
 		this.dno = dno;
 		this.dname = dname;

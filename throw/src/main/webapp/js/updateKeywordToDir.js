@@ -7,25 +7,33 @@ function superDirPrint(){
 	$.ajax({
 			url : "/throw/directories/sub",
 			method : "get" ,
-			data : {"dno":1} ,
+			data : {"dtype":1} , // 최상위호출
 			success : (r)=>{
 				console.log('통신')
 				console.log(r)
 				html = ''
 			r.forEach((o,i)=>{
-				html += `<div onclick="dirselect('${o.dno}','${o.dname}')" class="dir , dir${o.dno}">${o.dname}</div>`
+				
+				html += `
+						<div class="onebox">
+							<div class="onecontent" onclick="updateKeywordtoDir('${o.dno}','${o.dname}')">
+								<div class="onedirdeco"> <div class="dirdeco , dirdeco${o.dno}"></div>	</div>
+								<div class="ondirbox">
+									<div class="dirbox , dirbox${o.dno}">
+										<div class="dirname"> ${o.dname} </div>
+									</div>
+								</div>
+							</div>
+						</div>
+						`
 			})
 			
-			document.querySelector('.content').innerHTML = html
+			document.querySelector('.boxarea').innerHTML = html
 				
 			}
 		})
 }
 
-function dirselect(dno,dname){
-	
-	updateKeywordtoDir( dno , dname )
-}
 
 // 소속디렉토리가 없는 키워드를 디렉토리에 넣기
 function updateKeywordtoDir( dno , dname ){

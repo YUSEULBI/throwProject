@@ -46,12 +46,13 @@ public class KeywordDao extends Dao {
 	}
 	
 	// 오늘날짜 출력
-	public String getToday() {
+	public Object getToday() {
 		String sql = "select curdate()";
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
-			if ( rs.next() ) { return rs.getString(1); }
+			if ( rs.next() ) {
+				return rs.getObject(1); }
 		} catch (Exception e) {System.out.println("오늘날짜출력 예외 : "+e);		}
 		return null;
 	}

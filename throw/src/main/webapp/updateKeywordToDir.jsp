@@ -13,12 +13,19 @@
 		int kno = Integer.parseInt(request.getParameter("kno"));
 	%>
 	<input type="hidden" class="kno" value="<%=kno%>">
-	<div class="wrap">
-		<div class="dirwrap">
-			<div class="content">
-			</div>
-		</div>
-	</div>
+	<div class="wrap"> <!-- 모든jsp 공통 -->
+			<div class="titlearea"> <!-- 제목들어가는 구역 -->
+				<div class="titleinputdiv">
+					<input class="titleinput" type="text" value="폴더선택" disabled="disabled">
+				</div>
+			</div> 
+			
+			<div class="boxarea"> <!-- 디렉토리 or 키워드 들어가는 구역 -->
+							
+			</div>	<!-- boxarea -->
+			
+			
+	</div> <!-- wrap end -->
 	
 	
 	<script src="/throw/js/updateKeywordToDir.js" type="text/javascript"></script>

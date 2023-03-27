@@ -2,7 +2,7 @@ package dao;
 
 import java.util.ArrayList;
 
-import dto.dirDto;
+import dto.DirDto;
 
 public class DirectoryDao extends Dao {
 	
@@ -24,16 +24,22 @@ public class DirectoryDao extends Dao {
 	
 	
 	// Directories 불러오기
-	public ArrayList<dirDto> getDirList( int dno ){
+	public ArrayList<DirDto> getDirList( int dno ){
+		
 		System.out.println(dno);
-		ArrayList<dirDto> list = new ArrayList<>();
-		String sql = "select * from directories where parent_dno ="+dno;
+		ArrayList<DirDto> list = new ArrayList<>();
+		String sql = null;
+		if ( dno == 0 ) {
+			sql = "select * from directories where parent_dno is null;";
+		}else {
+			sql = "select * from directories where parent_dno ="+dno;
+		}
 		System.out.println("sql : "+sql);
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				dirDto dirDto = new dirDto(rs.getInt(1), rs.getString(2), rs.getInt(3));
+				DirDto dirDto = new DirDto(rs.getInt(1), rs.getString(2), rs.getInt(3));
 				System.out.println("dirDto : "+dirDto);
 				list.add(dirDto);
 			}

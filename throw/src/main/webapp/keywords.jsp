@@ -10,10 +10,15 @@
 <body>
 	<%@include file="/header.jsp" %>
 	<div class="wrap">
-		<div class="dirViewDiv">
-			<div class="kdate dname">2023</div>
-			<div class="content"></div>
-		</div>
+		<div class="titlearea"> <!-- 제목들어가는 구역 -->
+				<div class="titleinputdiv">
+					<input class="titleinput" type="text" value="2023" disabled="disabled">
+				</div>
+			</div> 
+			
+			<div class="boxarea"> <!-- 디렉토리 or 키워드 들어가는 구역 -->
+						
+			</div>	<!-- boxarea -->
 		
 		<div class="deletebox">
 			삭제
@@ -21,6 +26,6 @@
 	</div>
 	
 	<script src="/throw/js/keywords.js" type="text/javascript"></script>
-	<script src="/throw/js/commonKeywordDir.js" type="text/javascript"></script>
+	
 </body>
 </html>

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import dao.DirectoryDao;
-import dto.dirDto;
+import dto.DirDto;
 
 /**
  * Servlet implementation class Directories
@@ -29,9 +29,16 @@ public class Directories extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<dirDto> list = DirectoryDao.getInstance().getDirList();
-		System.out.println(list);
+		ArrayList<DirDto> list = null;
 		ObjectMapper mapper = new ObjectMapper();
+		int dtype = Integer.parseInt(request.getParameter("dtype"));
+		if ( dtype == 1 ) { // 최상위 출력
+			list = DirectoryDao.getInstance().getDirList(0);
+		}else if (dtype == 2) {
+			
+		}
+		
+		System.out.println(list);
 		String jsonlist = mapper.writeValueAsString(list);
 		System.out.println("jsonlist : "+jsonlist);
 		response.setCharacterEncoding("UTF-8");
