@@ -38,7 +38,7 @@ public class SubDirectories extends HttpServlet {
 		int dno = Integer.parseInt(request.getParameter("dno")); 
 		System.out.println("서블릿 dno : "+dno);
 		
-		ArrayList<dirDto> list = DirectoryDao.getInstance().getSubDirList(dno);
+		ArrayList<dirDto> list = DirectoryDao.getInstance().getDirList(dno);
 		System.out.println("서블릿 list : "+list);
 		
 		ObjectMapper mapper = new ObjectMapper();

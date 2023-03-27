@@ -20,21 +20,20 @@
 	<input type="hidden" class="dnamevalue" value="<%=dname%>">
 	
 	<div class="wrap">
-		<div class="dirViewDiv">
-			<div class="dnameDiv">
-				<input class="dname" type="text">
-			</div>
-			<div class="content">
-			
-			
-				
-				
+		<!-- ------------------------------------------------ -->
+		<div class="titlearea"> <!-- 제목들어가는 구역 -->
+			<div class="titleinputdiv">
+				<input class="titleinput" type="text" value="2023-03-05">
 			</div>
 		</div>
-		
+		<!-- ------------------------------------------------ -->
+		<div class="boxarea">
+		</div>
+		<!-- ------------------------------------------------ -->
 		<div class="deletebox">
 			삭제
 		</div>
+		<!-- ------------------------------------------------ -->
 	</div>
 	
 	

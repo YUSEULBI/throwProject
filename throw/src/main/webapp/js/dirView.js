@@ -2,12 +2,12 @@
 // 디렉토리 제목 출력
 let dno = document.querySelector('.dno').value;
 let dname = document.querySelector('.dnamevalue').value;
-document.querySelector('.dname').value = dname;
+document.querySelector('.titleinput').value = dname;
 
 console.log("js실행시 dno : "+dno)
-if ( dno == 1 ){
-	document.querySelector('.dname').value = '최상위디렉토리'
-	document.querySelector('.dname').disabled="disabled"
+if ( dno == null ){
+	document.querySelector('.titleinput').value = '최상위디렉토리'
+	document.querySelector('.titleinput').disabled="disabled"
 	
 }
 console.log("dno : "+dno)
@@ -28,12 +28,35 @@ function subDirPrint(){
 			
 			html = ''
 			r.forEach((o,i)=>{
-				html += `<div onclick="dirselect('${o.dno}','${o.dname}')" class="dir , dir${o.dno}">${o.dname}</div>`
+				html +=`
+						<div class="onebox">
+							<div class="onecontent">
+								<div class="onedirdeco"> <div class="dirdeco"></div>	</div>
+								<div class="ondirbox">
+									<div class="dirbox">
+										<div onclick="dirselect('${o.dno}','${o.dname}')" class="dirname , dir${o.dno}">${o.dname}</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						`
 			})
 			html += `<div class="dir">	
 						<div onclick="addSubDir('${dno}','${dname}')" class="addDirBtn"></div>
 					</div>`
-			document.querySelector('.content').innerHTML = html
+			
+			html +=`
+					<div class="onebox">
+						<div class="onecontent">
+							<div onclick="addSubDir('${dno}','${dname}')" class="addbuttonsort">
+								<div class="addbutton">
+									<div class="plustext">+</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					`
+			document.querySelector('.boxarea').innerHTML = html
 			getsubKeyword();
 		}
 	})
@@ -48,10 +71,27 @@ function getsubKeyword(){
 			console.log(r)
 			let html = ''
 			r.forEach((o,i)=>{
-				html += `<div onclick="keywordClick(${o.kno})" class="dir dir${o.kno}">${o.kcontent}</div>`
+				//html += `<div onclick="keywordClick(${o.kno})" class="dir dir${o.kno}">${o.kcontent}</div>`
+				html += `
+						<div class="onebox">
+							<div class="onecontent">
+								<div class="onekeywordsort"  onclick="keywordClick(${o.kno})">
+									<div class="keywordtextbox">
+										<div class="textdeco">
+											<div class="texttopdeco , texttopdeco${o.kno}"></div>
+											<div class="righttriangle , righttriangle${o.kno}"></div>
+										</div>
+										<div class="textbox , textbox${o.kno}">
+											<div class="keywordtext" >${o.kcontent}	</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						`
 			})
 			
-			document.querySelector('.content').innerHTML += html
+			document.querySelector('.boxarea').innerHTML += html
 		}
 	})
 }
@@ -68,26 +108,7 @@ console.log( "click : "+click)
 
 // 디렉토리 선택시 이동
 function dirselect(dno , dname){
-	console.log('dno : '+dno)
-	// 이미 클릭된 경우 다시 클릭 하면 링크 이동
-	console.log ('click : '+click)
-	if(click == 0){
 	
-		//클릭시 색바뀌고 휴지통 나오기
-		document.querySelector('.deletebox').style.display = 'block'
-		document.querySelector('.dir'+dno).style.backgroundColor = 'white'
-		document.querySelector('.dir'+dno).style.color = 'black'
-		savedno = dno
-		savedname = dname
-		click = 1;
-		return;
-		//파일 이동
-	}else if ( click == 1 ){
-		console.log("/throw/dirView.jsp?dno="+dno+"&dname="+dname)
-		location.href = "/throw/dirView.jsp?dno="+dno+"&dname="+dname;
-		return;
-	}
-	return;
 	
 }
 
@@ -105,7 +126,7 @@ deletebox.addEventListener('click' , (e)=>{
 				console.log(r)
 				if (r=='true'){
 					console.log('디렉토리 삭제성공')
-					location.href = "/throw/dirView.jsp?dno=1&dname=superdir";
+					location.href = "/throw/dirView.jsp?dno=1&dname=null";
 				}else{
 					console.log('디렉토리 삭제실패')
 				}
@@ -113,11 +134,8 @@ deletebox.addEventListener('click' , (e)=>{
 		})
 	})
 // 엔터 누르면 파일이름 바뀜
-document.addEventListener("keydown" , (e)=>{
-	console.log(e.keyCode)
-	if ( e.keyCode == 13 ){
-		console.log('enter를 누름')
-		let dname = document.querySelector('.dname').value
+function keydownEnter(){
+	let dname = document.querySelector('.titleinput').value
 		console.log('dname : ' + dname)
 		
 		$.ajax({
@@ -136,8 +154,7 @@ document.addEventListener("keydown" , (e)=>{
 				}
 			}
 		})
-	}
-})
+}	
 
 
 

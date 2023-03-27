@@ -12,7 +12,7 @@ public class DirectoryDao extends Dao {
 	
 	//최상위폴더에 저장
 	public boolean setDirectory( String dname ) {
-		String sql = "insert into directories(dname , parent_dno) values(? , 1);";
+		String sql = "insert into directories( dname ) values( ? );";
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, dname);
@@ -22,24 +22,9 @@ public class DirectoryDao extends Dao {
 		return false;
 	}
 	
-	// 최상위 디렉토리 출력
-	public ArrayList<dirDto> getDirList(){
-		ArrayList<dirDto> list = new ArrayList<>();
-		String sql = "select * from directories where parent_dno = 1";
-		try {
-			ps = con.prepareStatement(sql);
-			rs = ps.executeQuery();
-			while (rs.next()) {
-				dirDto dirDto = new dirDto(rs.getInt(1), rs.getString(2), rs.getInt(3));
-				list.add(dirDto);
-			}
-		} catch (Exception e) {System.out.println(e);	}
-		System.out.println(list);
-		return list;
-	}
 	
-	// subDirectories 불러오기
-	public ArrayList<dirDto> getSubDirList( int dno ){
+	// Directories 불러오기
+	public ArrayList<dirDto> getDirList( int dno ){
 		System.out.println(dno);
 		ArrayList<dirDto> list = new ArrayList<>();
 		String sql = "select * from directories where parent_dno ="+dno;
