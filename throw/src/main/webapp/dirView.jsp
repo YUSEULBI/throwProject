@@ -14,10 +14,8 @@
 	<%
 		// 선택한 파일명 가져오기
 		String dno = request.getParameter("dno");
-		String dname = request.getParameter("dname");
 	%>
 	<input type="hidden" class="dno" value="<%=dno%>">
-	<input type="hidden" class="dnamevalue" value="<%=dname%>">
 	
 	<div class="wrap">
 		<!-- ------------------------------------------------ -->

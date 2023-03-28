@@ -2,23 +2,22 @@
 // 디렉토리 제목 출력
 	//jsp에서 url dno,dname 가져오기
 let dno = document.querySelector('.dno').value;
-let dname = document.querySelector('.dnamevalue').value;
-document.querySelector('.titleinput').value = dname;
 
 console.log("js실행시 dno : "+dno)
-if ( dno == null ){
+if ( dno == 0 ){
 	document.querySelector('.titleinput').value = '최상위디렉토리'
 	document.querySelector('.titleinput').disabled="disabled"
+}else{
 	
 }
-console.log("dno : "+dno)
+
 
 // 하위 디렉토리 출력
 subDirPrint();
 function subDirPrint(){
 	console.log('subDirPrint 실행')
 	console.log('subDirPrint함수내 dno : '+dno)
-	console.log('subDirPrint함수내 dname : '+dname)
+
 	$.ajax({
 		url: "/throw/directories/sub",
 		method : "get",

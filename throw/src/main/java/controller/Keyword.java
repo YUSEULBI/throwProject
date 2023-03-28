@@ -79,14 +79,17 @@ public class Keyword extends HttpServlet {
 		System.out.println("skno : "+skno);
 		int kno = Integer.parseInt(request.getParameter("kno"));
 		System.out.println("kno : "+kno);
-		boolean result = false;
+		boolean result = false; // 공통
+		
 		int puttype = Integer.parseInt(request.getParameter("puttype"));
 		System.out.println("puttype : "+puttype);
+		
 		if (puttype == 1) { // 소속 디렉토리가 없는 키워드를 디렉토리에 추가
 			int dno = Integer.parseInt(request.getParameter("dno"));
 			System.out.println("dno : "+dno);
 			result = KeywordDao.getInstance().updateKeywordtoDir(dno, kno);
-		}else if ( puttype == 2  ) { // 키워드명 변경
+			
+		}else if ( puttype == 2  ) { // 키워드 변경
 			String keyword = request.getParameter("keyword");
 			System.out.println("keyword : "+keyword);
 			result = KeywordDao.getInstance().updateKeywordContent(keyword, kno);
