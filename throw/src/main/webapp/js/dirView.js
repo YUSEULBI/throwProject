@@ -1,31 +1,34 @@
 
-// 디렉토리 제목 출력
-	//jsp에서 url dno,dname 가져오기
+
+//jsp에서 url dno 가져오기
 let dno = document.querySelector('.dno').value;
 
 console.log("js실행시 dno : "+dno)
-if ( dno == 0 ){
-	document.querySelector('.titleinput').value = '최상위디렉토리'
-	document.querySelector('.titleinput').disabled="disabled"
-}else{
-	
-}
 
 
-// 하위 디렉토리 출력
-subDirPrint();
-function subDirPrint(){
+
+// 디렉토리 출력
+dirPrint();
+function dirPrint(){
 	console.log('subDirPrint 실행')
 	console.log('subDirPrint함수내 dno : '+dno)
 
 	$.ajax({
-		url: "/throw/directories/sub",
+		url: "/throw/directories",
 		method : "get",
 		data : {"dno":dno},
 		success : (r)=>{
 			console.log('통신')
 			console.log(r)
 			
+			// 디렉토리 제목 -----------------------------------------------------			
+			if ( dno == 0 ){ // 최상위폴더
+				document.querySelector('.titleinput').value = '최상위디렉토리'
+				document.querySelector('.titleinput').disabled="disabled"
+			}else{ // 하위폴더
+				document.querySelector('.titleinput').value = r[0].parent_dno;
+			}
+			// 하위디렉토리 출력 -----------------------------------------------------
 			html = ''
 			r.forEach((o,i)=>{
 				html +=`
@@ -40,11 +43,9 @@ function subDirPrint(){
 							</div>
 						</div>
 						`
-			})
-			html += `<div class="dir">	
-						<div onclick="addSubDir('${dno}','${dname}')" class="addDirBtn"></div>
-					</div>`
+			}) // forEach end
 			
+			// 하위디렉토리 추가버튼 -----------------------------------------------------
 			html +=`
 					<div class="onebox">
 						<div class="onecontent">
@@ -58,9 +59,10 @@ function subDirPrint(){
 					`
 			document.querySelector('.boxarea').innerHTML = html
 			getsubKeyword();
-		}
-	})
-}
+		} // success end
+	}) // ajax end
+} // dirPrint 함수 end
+
 // 하위키워드 출력
 function getsubKeyword(){
 	$.ajax({
@@ -71,7 +73,6 @@ function getsubKeyword(){
 			console.log(r)
 			let html = ''
 			r.forEach((o,i)=>{
-				//html += `<div onclick="keywordClick(${o.kno})" class="dir dir${o.kno}">${o.kcontent}</div>`
 				html += `
 						<div class="onebox">
 							<div class="onecontent">

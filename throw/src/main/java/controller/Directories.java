@@ -29,14 +29,13 @@ public class Directories extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<DirDto> list = null;
+		
 		ObjectMapper mapper = new ObjectMapper();
-		int dtype = Integer.parseInt(request.getParameter("dtype"));
-		if ( dtype == 1 ) { // 최상위 출력
-			list = DirectoryDao.getInstance().getDirList(0);
-		}else if (dtype == 2) {
-			
-		}
+		int dno = Integer.parseInt(request.getParameter("dno")); 
+		System.out.println("서블릿 dno : "+dno);
+		
+		ArrayList<DirDto> list = DirectoryDao.getInstance().getDirList(dno);
+		System.out.println("서블릿 list : "+list);
 		
 		System.out.println(list);
 		String jsonlist = mapper.writeValueAsString(list);
