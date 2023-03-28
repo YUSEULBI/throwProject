@@ -51,11 +51,12 @@ public class Keyword extends HttpServlet {
 			response.getWriter().print(jsondto);
 		}else if( gettype == 3 ) { // 선택한 디렉토리 안의 키워드dto리스트 반환
 			int dno = Integer.parseInt(request.getParameter("dno"));
+			System.out.println("dno : "+dno);
 			ArrayList<KeywordDto> list =  KeywordDao.getInstance().getSelectDirKeyword(dno);
 			String jsonlist = mapper.writeValueAsString(list);
 			response.getWriter().print(jsonlist);
 		}else if ( gettype == 4 ) { // 오늘 날짜 출력
-			String today = (String)KeywordDao.getInstance().getToday();
+			String today = String.valueOf(KeywordDao.getInstance().getToday());
 			System.out.println("서블릿 get today : "+today);
 			response.getWriter().print(today);
 		}

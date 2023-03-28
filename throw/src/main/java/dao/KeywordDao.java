@@ -111,7 +111,12 @@ public class KeywordDao extends Dao {
 	// 선택한 dir의 하위키워드 리스트 출력
 	public ArrayList<KeywordDto> getSelectDirKeyword( int dno ){
 		ArrayList<KeywordDto> list = new ArrayList<>();
-		String sql = "select * from keyword where dno = "+dno;
+		String sql = null;
+		if ( dno == 0 ) {
+			sql = "select * from keyword where dno IS null";
+		}else {
+			sql = "select * from keyword where dno = "+dno;
+		}
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();

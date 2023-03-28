@@ -1,10 +1,10 @@
 console.log('keywords 실행')
-getToday();
-getTodayKeyword();
+
 let knolist = []
 let savekno = 0 //키워드 삭제, 키워드수정페이지 이동용 전역변수
 let deletebox = document.querySelector('.deletebox') //휴지통 전역변수
-
+getToday();
+getTodayKeyword();
 // 오늘 날짜
 function getToday(){
 	console.log('getToday 실행')
@@ -12,7 +12,9 @@ function getToday(){
 		url : "/throw/keyword",
 		method : "get",
 		data : { "gettype":4 } ,
+		async : false ,
 		success:(r)=>{
+			console.log(r)
 			console.log('오늘날짜 : '+r)
 			document.querySelector('.titleinput').value = r
 		}
@@ -24,6 +26,7 @@ function getTodayKeyword(){
 	$.ajax({
 		url : "/throw/keyword",
 		method : "get",
+		async : false ,
 		data : { "gettype":1 } ,
 		success:(r)=>{
 			console.log(r)
@@ -132,7 +135,7 @@ deletebox.addEventListener("click",(e)=>{
 	
 function swipeup(){
 	console.log("위로throw");
-	location.href = "/throw/dirView.jsp?dno=null&dname=null";
+	location.href = "/throw/dirView.jsp?dno=0";
 }
 
 function swipedown(){

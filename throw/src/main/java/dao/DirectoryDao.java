@@ -39,7 +39,7 @@ public class DirectoryDao extends Dao {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				DirDto dirDto = new DirDto(rs.getInt(1), rs.getString(2), rs.getInt(3));
+				DirDto dirDto = new DirDto(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4));
 				System.out.println("dirDto : "+dirDto);
 				list.add(dirDto);
 			}

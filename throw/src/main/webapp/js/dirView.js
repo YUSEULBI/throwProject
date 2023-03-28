@@ -49,7 +49,7 @@ function dirPrint(){
 			html +=`
 					<div class="onebox">
 						<div class="onecontent">
-							<div onclick="addSubDir('${dno}','${dname}')" class="addbuttonsort">
+							<div onclick="addSubDir('${dno}')" class="addbuttonsort">
 								<div class="addbutton">
 									<div class="plustext">+</div>
 								</div>
@@ -58,19 +58,21 @@ function dirPrint(){
 					</div>
 					`
 			document.querySelector('.boxarea').innerHTML = html
-			getsubKeyword();
+			getKeyword();
 		} // success end
 	}) // ajax end
 } // dirPrint 함수 end
 
 // 하위키워드 출력
-function getsubKeyword(){
+
+function getKeyword(){
+	console.log('getKeyword() 실행')
 	$.ajax({
 		url : "/throw/keyword",
 		method : "get",
 		data : { "gettype":3 , "dno":dno } , // gettype : 선택한 디렉토리 안의 키워드dto리스트 반환
 		success:(r)=>{
-			console.log(r)
+			console.log('getKeyword()'+r)
 			let html = ''
 			r.forEach((o,i)=>{
 				html += `
@@ -163,7 +165,7 @@ function keydownEnter(){
 
 function swipeup(){
 	console.log("위로throw");
-	location.href = "/throw/dirView.jsp?dno=1&dname=null";
+	
 }
 
 function swipedown(){

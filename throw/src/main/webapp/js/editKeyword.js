@@ -31,13 +31,16 @@ function editbtn(){
 		url : "/throw/keyword",
 		method : "put" ,
 		data : {"kno":kno , "keyword":keyword ,"puttype":2} ,
+		async : false ,
 		success:(r)=>{
 			console.log('통신')
 			console.log(r)
 			if ( r=='true'){
 				alert('키워드 변경성공')
 				// 키워드 수정 성공 후 키워드 소속 폴더내 dirview로 이동
-				if ( r.dno == 0 ){ // 부모 폴더 없으면
+				console.log('r.dno : '+r.dno)
+				console.log(r.dno == undefined)
+				if ( r.dno == undefined ){ // 부모 폴더 없으면
 					location.href = "/throw/dirView.jsp?dno=0";
 				}else{ // 부모 폴더 없으면
 					location.href = "/throw/dirView.jsp?dno="+r.dno;
