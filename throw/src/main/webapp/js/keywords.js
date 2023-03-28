@@ -61,54 +61,7 @@ function getTodayKeyword(){
 
 
 
-// 키워드를 선택했을 때
-function keywordClick(kno){
-	console.log('keywordClick 함수실행')
-//	console.log('kno : '+kno)
-	
-	
-	knolist.forEach((o,i)=>{
-		// 이전에 다른 디렉토리 선택중이었으면 이전선택해제
-		if (document.querySelector('.dir'+o).style.backgroundColor == 'white'){
-			if ( o != kno ){
-				deletebox.style.display = 'none'
-				document.querySelector('.dir'+o).style.backgroundColor = 'black'
-				document.querySelector('.dir'+o).style.color = 'white'
-				savekno = 0;	
-			}
-		}
-	})
-	
-	if ( savekno == 0 ){
-		savekno = kno;	
-	}else{
-		savekno = 0;
-	}
-	console.log('savekno : '+savekno)
-	
-	//휴지통 표시중이면 숨기기 / 숨김중이면 표시하기
-	if ( deletebox.style.display == 'block' ){
-		deletebox.style.display = 'none'
-	}else{
-		deletebox.style.display = 'block'
-	}
-	
-	//키워드 선택중이면 선택해제 css
-	if (document.querySelector('.dir'+kno).style.backgroundColor == 'white'){
-		document.querySelector('.dir'+kno).style.backgroundColor = 'black'
-	}else{
-		document.querySelector('.dir'+kno).style.backgroundColor = 'white'	
-	}
-	
-	//키워드 선택중이면 선택해제 css
-	if ( document.querySelector('.dir'+kno).style.color == 'black'){
-		document.querySelector('.dir'+kno).style.color = 'white'
-	}else{
-		document.querySelector('.dir'+kno).style.color = 'black'
-	}
-	
-	
-}
+
 
 // 휴지통박스 선택시 키워드 삭제
 deletebox.addEventListener("click",(e)=>{
