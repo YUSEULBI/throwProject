@@ -23,8 +23,7 @@ document.addEventListener("keydown" , (e)=>{
 				if (r=='true'){
 					console.log('서브디렉토리추가성공')
 					document.querySelector('.dname').value = '';
-					let parent_dno = document.querySelector('.parent_dno').value;
-					location.href = "/throw/dirView.jsp?dno="+dno+"&dname="+parent_dno;
+					location.href = "/throw/dirView.jsp?dno="+dno;
 				}else{
 					console.log('서브디렉토리추가실패')
 				}

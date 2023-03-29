@@ -100,8 +100,8 @@ function getKeyword(){
 }
 
 // 하위디렉토리 새로만들기 jsp로 이동
-function addSubDir( dno , dname ){
-	location.href="/throw/addSubDir.jsp?dno="+dno+"&dname="+dname;
+function addSubDir( dno ){
+	location.href="/throw/addSubDir.jsp?dno="+dno;
 }
 
 let savedno = 0; // dno 전역변수 저장
@@ -111,7 +111,7 @@ console.log( "click : "+click)
 let deletebox = document.querySelector('.deletebox')
 
 // 디렉토리 선택시 이동
-function dirselect(dno , dname){
+function dirselect(dno){
 	
 	
 }

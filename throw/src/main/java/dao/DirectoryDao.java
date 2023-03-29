@@ -50,8 +50,14 @@ public class DirectoryDao extends Dao {
 	
 	// subDirectories 추가
 	public boolean setSubDir( int dno , String dname) {
-		String sql = "insert into directories(dname , parent_dno ) "
+		String sql = "";
+		if ( dno == 0 ) {
+			sql = "insert into directories(dname ) "
+					+ "values('"+dname+"' );";
+		}else {
+			sql = "insert into directories(dname , parent_dno ) "
 				+ "values('"+dname+"' , "+dno+");";
+		}
 		try {
 			ps = con.prepareStatement(sql);
 			int count = ps.executeUpdate();
