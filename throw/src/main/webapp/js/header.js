@@ -30,7 +30,7 @@ window.addEventListener("touchend",(e)=>{
 	if((startPoint-endPoint)>200){	swipeup();	}
 	// 아래로 스와이프(간격 200)
 	else if((startPoint - endPoint)<-200){ 	swipedown(); }
-	// 드래그 0.8초
+	// 터치홀드 0.8초
 	if ( (end - start)>800 ){ longdrag(); }
 })
 
@@ -43,4 +43,14 @@ document.addEventListener("keydown" , (e)=>{
 		console.log('enter를 누름')
 		keydownEnter()		
 	}
+})
+
+
+// 휴지통 클릭시
+document.querySelector('.deletebtn').addEventListener("click" , (e)=>{
+	console.log('삭제 클릭')
+})
+
+document.querySelector('.editbtn').addEventListener("click" , (e)=>{
+	console.log('수정 클릭')
 })

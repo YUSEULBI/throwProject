@@ -18,7 +18,9 @@
 				<div class="titleinputdiv">
 					<input class="titleinput" type="text" value="키워드수정" disabled="disabled"">
 				</div>
-				<div onclick="editbtn()" class="editbtn">완료</div> 
+				<div onclick="keyworddeletebtn()" class="keyworddeletebtn">삭제</div>
+				<div onclick="keywordeditbtn()" class="keywordeditbtn">완료</div>
+				  
 			</div>
 			
 			

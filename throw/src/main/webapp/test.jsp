@@ -82,7 +82,11 @@
 				
 				
 			</div>	<!-- boxarea -->
-			
+			<!-- 휴지통 menuarea display:none 상태임 -->
+			<div class="menuarea">
+				<div class="deletebtn"> 삭제	</div>
+				<div class="editbtn"> 수정 </div>
+			</div> <!-- menuarea end -->
 			
 	</div> <!-- wrap end -->
 </body>

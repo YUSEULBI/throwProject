@@ -7,10 +7,21 @@
 .titlearea{
 	position: relative;
 }
-.editbtn{
+.keywordeditbtn , .keyworddeletebtn{
 	position: absolute;
-	top:0px;
-	right: 0px;
+	width : 15%;
+	
 	font-size: 40px;
 	border: 2px solid white;
+	text-align: center;
+}
+
+.keywordeditbtn{
+	top:0px;
+	right: 0px;
+}
+
+.keyworddeletebtn{
+	top:0px;
+	right: 150px;
 }

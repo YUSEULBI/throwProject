@@ -23,7 +23,7 @@ function getKeyword(){
 }
 
 // 완료버튼을 누르면 키워드수정
-function editbtn(){
+function keywordeditbtn(){
 	let keyword = document.querySelector('.ktextarea').value
 	console.log("keyword : "+keyword)
 	
@@ -53,3 +53,22 @@ function editbtn(){
 }
 
 
+function keyworddeletebtn(){
+	$.ajax({
+		url : "/throw/keyword",
+		method : "delete" ,
+		data : {"kno":kno } ,
+		async : false ,
+		success:(r)=>{
+			console.log('통신')
+			console.log(r)
+			if ( r=='true'){
+				alert('키워드 삭제성공')
+				location.href = "/throw/dirView.jsp?dno=0";
+			}else{
+				alert('키워드 삭제실패')
+			}
+		}
+	})
+	
+}	

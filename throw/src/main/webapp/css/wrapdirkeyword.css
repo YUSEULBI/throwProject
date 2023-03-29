@@ -33,7 +33,7 @@ input:focus {outline:none;}
 	color: white;
 	display: flex;
 	flex-direction: column;
-	
+	position: relative;
 }
 
 /*---------제목 구역----------*/
@@ -217,6 +217,27 @@ input:focus {outline:none;}
 	font-weight:bold;
 	text-align: center;
 	font-size: 150px;
+}
+
+/*----------터치 홀드시 메뉴----------*/
+
+
+.menuarea{
+	position: absolute;
+	width : 100%;
+	height: 150px;
+	bottom: 50px;
+	display: none;
+/* 	display: flex; */
+}
+
+.deletebtn , .editbtn{
+	background-color: white;
+	width: 50%;
+	color: black;
+	font-size: 50px;
+	text-align: center;
+	margin: 10px;
 }
 
 
