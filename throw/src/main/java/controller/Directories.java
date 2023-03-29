@@ -30,20 +30,33 @@ public class Directories extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		// 공통
+		int gettype = Integer.parseInt(request.getParameter("gettype"));
 		ObjectMapper mapper = new ObjectMapper();
-		int dno = Integer.parseInt(request.getParameter("dno")); 
-		System.out.println("서블릿 dno : "+dno);
+		int dno = Integer.parseInt(request.getParameter("dno"));
+		System.out.println("Directories서블릿 get dno : "+dno);
+		String json = "";
 		
-		ArrayList<DirDto> list = DirectoryDao.getInstance().getDirList(dno);
-		System.out.println("서블릿 list : "+list);
+		// 타입1 선택한 디렉토리 dno의 하위 디렉토리 꺼내기
+		if ( gettype == 1 ) {
+			
+			ArrayList<DirDto> list = DirectoryDao.getInstance().getDirList(dno);
+			System.out.println("서블릿 list : "+list);
+			System.out.println(list);
+			
+			json = mapper.writeValueAsString(list);
+			System.out.println("json : "+json);
 		
-		System.out.println(list);
-		String jsonlist = mapper.writeValueAsString(list);
-		System.out.println("jsonlist : "+jsonlist);
+		// 타입2 선택한 dno 디렉토리 DirDto 가져오기
+		}else if ( gettype == 2 ) {
+			
+			DirDto dirDto = DirectoryDao.getInstance().getDirdto(dno);
+			json = mapper.writeValueAsString(dirDto);
+		}
+		
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json");
-		response.getWriter().print(jsonlist);
-		
+		response.getWriter().print(json);
 	}
 
 	

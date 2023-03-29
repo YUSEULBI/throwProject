@@ -4,10 +4,9 @@
 	width: 100%;
 	height: 100%;
 }
-.titlearea{
-	position: relative;
-}
+
 .keywordeditbtn , .keyworddeletebtn{
+	/*podition : relative는 wrapdirkeyword.css의 .titlearea*/
 	position: absolute;
 	width : 15%;
 	

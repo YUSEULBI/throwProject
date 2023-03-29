@@ -1,6 +1,6 @@
 
 let kno = document.querySelector('.kno').value
-
+let dno = 0;
 // 최상위디렉토리 출력
 superDirPrint();
 function superDirPrint(){

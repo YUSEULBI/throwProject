@@ -24,6 +24,7 @@
 							
 			</div>	<!-- boxarea -->
 			
+			<div class="selectdirbtn"></div>
 			
 	</div> <!-- wrap end -->
 	

@@ -58,7 +58,7 @@ function keydownEnter(){
 		if ( addKeyword() ){//키워드생성
 			// 디렉토리에 넣기 페이지로
 			console.log("키워드 추가후 이동전 kno : "+kno)
-			location.href="http://localhost:8080/throw/updateKeywordToDir.jsp?kno="+kno;
+			location.href="/throw/dirView.jsp?dno=0&kno="+kno;
 		}
 	}else{
 		
@@ -67,7 +67,7 @@ function keydownEnter(){
 		if ( updateKeyword() ){//키워드수정
 				// 디렉토리에 넣기 페이지로
 				console.log("키워드 수정후 이동전 kno : "+kno)
-				location.href="http://localhost:8080/throw/updateKeywordToDir.jsp?kno="+kno;
+				location.href="/throw/dirView.jsp?dno=0&kno="+kno;
 		}
 		
 	}

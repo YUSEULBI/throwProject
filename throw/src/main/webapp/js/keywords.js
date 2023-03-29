@@ -88,7 +88,7 @@ deletebox.addEventListener("click",(e)=>{
 	
 function swipeup(){
 	console.log("위로throw");
-	location.href = "/throw/dirView.jsp?dno=0";
+	location.href = "/throw/dirView.jsp?dno=0&kno=0";
 }
 
 function swipedown(){

@@ -44,6 +44,10 @@ input:focus {outline:none;}
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	
+	/*---dirview.css의 .dirdelete 용 포지션*/
+	/*---editKeyword.css의 .keywordeditbtn , .keyworddeletebtn용 포지션*/
+	position: relative;
 }
 .titletext{
 	height:50%;
@@ -66,6 +70,8 @@ input:focus {outline:none;}
  	-moz-user-select: all;
  	-ms-use-select: all;
  	user-select: all;
+ 	
+ 	
 }
 
 /*---------공통구역(디렉토리,키워드)----------*/

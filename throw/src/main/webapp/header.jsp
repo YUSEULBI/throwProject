@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="/throw/css/wrap.css" rel="stylesheet">
 <link href="/throw/css/wrapdirkeyword.css" rel="stylesheet">
 </head>
 <body>
