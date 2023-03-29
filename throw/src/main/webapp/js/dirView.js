@@ -26,7 +26,7 @@ function dirPrint(){
 				document.querySelector('.titleinput').value = '최상위디렉토리'
 				document.querySelector('.titleinput').disabled="disabled"
 			}else{ // 하위폴더
-				document.querySelector('.titleinput').value = r[0].parent_dno;
+				// 폴더이름 구하기
 			}
 			// 하위디렉토리 출력 -----------------------------------------------------
 			html = ''
@@ -112,8 +112,7 @@ let deletebox = document.querySelector('.deletebox')
 
 // 디렉토리 선택시 이동
 function dirselect(dno){
-	
-	
+	location.href = "/throw/dirView.jsp?dno="+dno;
 }
 
 // 휴지통 클릭

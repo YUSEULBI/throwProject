@@ -22,6 +22,19 @@ public class DirectoryDao extends Dao {
 		return false;
 	}
 	
+	// 선택한 dno 정보 구하기
+	public DirDto getDirdto ( int dno ) {
+		String sql = "select * from directories where dno = "+dno;
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if ( rs.next() ) {
+				DirDto dirDto = new DirDto(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4));
+				return dirDto;
+			}
+		} catch (Exception e) { System.out.println(e);	}
+		return null;
+	}
 	
 	// Directories 불러오기
 	public ArrayList<DirDto> getDirList( int dno ){
