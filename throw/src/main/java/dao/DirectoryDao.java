@@ -25,11 +25,13 @@ public class DirectoryDao extends Dao {
 	// 선택한 dno 정보 구하기
 	public DirDto getDirdto ( int dno ) {
 		String sql = "select * from directories where dno = "+dno;
+		System.out.println("sql : "+sql);
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			if ( rs.next() ) {
 				DirDto dirDto = new DirDto(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4));
+				System.out.println("dirDto : "+dirDto);
 				return dirDto;
 			}
 		} catch (Exception e) { System.out.println(e);	}

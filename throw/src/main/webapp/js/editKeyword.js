@@ -2,8 +2,8 @@ console.log('editKeyword js 실행')
 
 // 필요한 경로 : http://localhost:8080/throw/editKeyword.jsp?kno=1
 // 키워드 수정완료시 이동경로 
-// [상위폴더 없으면] location.href = "/throw/dirView.jsp?dno=0";
-// [상위폴더 있으면] location.href = "/throw/dirView.jsp?dno="+r.dno;
+// [상위폴더 없으면] location.href = "/throw/dirView.jsp?dno=0&kno=0";
+// [상위폴더 있으면] location.href = "/throw/dirView.jsp?dno="+r.dno+"&kno=0";
 // 선택한 키워드불러오기 위해 kno가 필요
 let kno = document.querySelector('.kno').value;
 
@@ -41,9 +41,9 @@ function keywordeditbtn(){
 				console.log('r.dno : '+r.dno)
 				console.log(r.dno == undefined)
 				if ( r.dno == undefined ){ // 부모 폴더 없으면
-					location.href = "/throw/dirView.jsp?dno=0";
+					location.href = "/throw/dirView.jsp?dno=0&kno=0";
 				}else{ // 부모 폴더 없으면
-					location.href = "/throw/dirView.jsp?dno="+r.dno;
+					location.href = "/throw/dirView.jsp?dno="+r.dno+"&kno=0";
 				}
 			}else{
 				alert('키워드 변경실패')
@@ -64,7 +64,7 @@ function keyworddeletebtn(){
 			console.log(r)
 			if ( r=='true'){
 				alert('키워드 삭제성공')
-				location.href = "/throw/dirView.jsp?dno=0";
+				location.href = "/throw/dirView.jsp?dno=0&kno=0";
 			}else{
 				alert('키워드 삭제실패')
 			}

@@ -32,6 +32,7 @@ public class Directories extends HttpServlet {
 		
 		// 공통
 		int gettype = Integer.parseInt(request.getParameter("gettype"));
+		System.out.println("gettype : "+gettype);
 		ObjectMapper mapper = new ObjectMapper();
 		int dno = Integer.parseInt(request.getParameter("dno"));
 		System.out.println("Directories서블릿 get dno : "+dno);

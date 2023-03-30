@@ -13,14 +13,14 @@ let selectdirno = 0; // 키워드 넣을 디렉토리 선택시 사용할 전역
 let dnoinfo = {}
 // dnoinfo.dno / dnoinfo.dname / dnoinfo.parent_dno / dnoinfo.ddate
 
-if ( dno == 0 ){
+if ( dno == 0 ){ //최상위 삭제버튼 감추기
 	document.querySelector('.dirdelete').style.display = "none";
 }
 
 // 키워드의 디렉토리 선택 화면
 selectbtnprint();
 function selectbtnprint(){
-	if ( dno > 0 ){
+	if ( kno > 0 ){
 		document.querySelector('.selectdir').style.display = "block";
 	}
 }
@@ -57,6 +57,7 @@ function dirNamePrint(){
 				url: "/throw/directories",
 				method : "get",
 				data : {"dno":dno , "gettype":2},
+				async : false ,
 				success : (r)=>{
 					console.log('통신')
 					console.log(r)
@@ -79,6 +80,7 @@ function dirPrint(){
 		url: "/throw/directories",
 		method : "get",
 		data : {"dno":dno , "gettype":1},
+		async : false ,
 		success : (r)=>{
 			console.log('통신')
 			console.log(r)
