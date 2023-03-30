@@ -1,22 +1,26 @@
 
 // 키워드의 폴더 선택
 //location.href="/throw/dirView.jsp?dno=0?kno="+kno;
-
-
 //jsp에서 url dno , kno 가져오기
-let dno = document.querySelector('.dno').value;
-console.log("js실행시 dno : "+dno)
-let kno = document.querySelector('.kno').vaule;
-console.log("js실행시 kno : "+kno)
+	let dno = document.querySelector('.dno').value;
+	console.log("js실행시 dno : "+dno)
+	let kno = document.querySelector('#kno').value;
+	console.log("js실행시 kno : "+kno)
+
+
 let selectdirno = 0; // 키워드 넣을 디렉토리 선택시 사용할 전역변수
 
 let dnoinfo = {}
 // dnoinfo.dno / dnoinfo.dname / dnoinfo.parent_dno / dnoinfo.ddate
 
+if ( dno == 0 ){
+	document.querySelector('.dirdelete').style.display = "none";
+}
+
 // 키워드의 디렉토리 선택 화면
 selectbtnprint();
 function selectbtnprint(){
-	if ( kno > 0 ){
+	if ( dno > 0 ){
 		document.querySelector('.selectdir').style.display = "block";
 	}
 }
@@ -238,21 +242,21 @@ function longdrag(){
 /* 보류 */
 
 // 휴지통 클릭
-deletebox.addEventListener('click' , (e)=>{
-		console.log('휴지통클릭')
-		$.ajax({
-			url : "/throw/directories",
-			method : "delete",
-			data : {"dno":savedno },
-			success : (r)=>{
-				console.log('통신')
-				console.log(r)
-				if (r=='true'){
-					console.log('디렉토리 삭제성공')
-					location.href = "/throw/dirView.jsp?dno=1&dname=null";
-				}else{
-					console.log('디렉토리 삭제실패')
-				}
-			}
-		})
-	})
+//deletebox.addEventListener('click' , (e)=>{
+//		console.log('휴지통클릭')
+//		$.ajax({
+//			url : "/throw/directories",
+//			method : "delete",
+//			data : {"dno":savedno },
+//			success : (r)=>{
+//				console.log('통신')
+//				console.log(r)
+//				if (r=='true'){
+//					console.log('디렉토리 삭제성공')
+//					location.href = "/throw/dirView.jsp?dno=1&dname=null";
+//				}else{
+//					console.log('디렉토리 삭제실패')
+//				}
+//			}
+//		})
+//	})

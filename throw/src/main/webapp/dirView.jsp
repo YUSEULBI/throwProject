@@ -20,8 +20,9 @@
 		System.out.println("dirview.jsp kno : "+kno);
 		
 	%>
+	
 	<input type="hidden" class="dno" value="<%=dno%>">
-	<input type="hidden" class="kno" value="<%=kno%>">
+	<input type="hidden" class="kno" id="kno" value="<%=kno%>">
 	
 	<div class="wrap">
 		<!-- ------------------------------------------------ -->

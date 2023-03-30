@@ -47,10 +47,10 @@ document.addEventListener("keydown" , (e)=>{
 
 
 // 휴지통 클릭시
-document.querySelector('.deletebtn').addEventListener("click" , (e)=>{
-	console.log('삭제 클릭')
-})
+//document.querySelector('.deletebtn').addEventListener("click" , (e)=>{
+//	console.log('삭제 클릭')
+//})
 
-document.querySelector('.editbtn').addEventListener("click" , (e)=>{
-	console.log('수정 클릭')
-})
+//document.querySelector('.editbtn').addEventListener("click" , (e)=>{
+//	console.log('수정 클릭')
+//})
