@@ -98,24 +98,24 @@ function addKeyword(){
 }
 
 // 키워드수정
-function updateKeyword(){
-	let keyword = document.querySelector('.dname').value
-	let result = ''
-	console.log('키워드수정 kno : '+kno)
-	$.ajax({
-		url : "/throw/keyword" ,
-		method : "put" ,
-		data : { "kno":kno , "keyword":keyword , "puttype":2  } , // puttype:1 디렉토리추가 // puttype:2 키워드내용 변경
-		async : false,
-		success : (r)=>{
-			console.log(r)
-			result = r
-			if (r == 'true'){
-				console.log('키워드 수정성공')
-			}else{
-				console.log('키워드 수정실패')
-			}
-		}
-	})
-	return result;
-}
+//function updateKeyword(){
+//	let keyword = document.querySelector('.dname').value
+//	let result = ''
+//	console.log('키워드수정 kno : '+kno)
+//	$.ajax({
+//		url : "/throw/keyword" ,
+//		method : "put" ,
+//		data : { "kno":kno , "keyword":keyword , "puttype":2  } , // puttype:1 디렉토리추가 // puttype:2 키워드내용 변경
+//		async : false,
+//		success : (r)=>{
+//			console.log(r)
+//			result = r
+//			if (r == 'true'){
+//				console.log('키워드 수정성공')
+//			}else{
+//				console.log('키워드 수정실패')
+//			}
+//		}
+//	})
+//	return result;
+//}

@@ -6,7 +6,7 @@ console.log('editKeyword js 실행')
 // [상위폴더 있으면] location.href = "/throw/dirView.jsp?dno="+r.dno+"&kno=0";
 // 선택한 키워드불러오기 위해 kno가 필요
 let kno = document.querySelector('.kno').value;
-
+let info = { }
 getKeyword();
 function getKeyword(){
 	console.log("kno : "+kno)
@@ -17,6 +17,7 @@ function getKeyword(){
 		success:(r)=>{
 			console.log('통신')
 			console.log(r)
+			info = r;
 			document.querySelector('.ktextarea').value = r.kcontent
 		}
 	})
@@ -38,13 +39,9 @@ function keywordeditbtn(){
 			if ( r=='true'){
 				alert('키워드 변경성공')
 				// 키워드 수정 성공 후 키워드 소속 폴더내 dirview로 이동
-				console.log('r.dno : '+r.dno)
-				console.log(r.dno == undefined)
-				if ( r.dno == undefined ){ // 부모 폴더 없으면
-					location.href = "/throw/dirView.jsp?dno=0&kno=0";
-				}else{ // 부모 폴더 없으면
-					location.href = "/throw/dirView.jsp?dno="+r.dno+"&kno=0";
-				}
+				console.log('info.dno : '+info.dno);
+				location.href = "/throw/dirView.jsp?dno="+info.dno+"&kno=0";
+				
 			}else{
 				alert('키워드 변경실패')
 			}

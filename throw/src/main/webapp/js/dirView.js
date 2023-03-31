@@ -173,7 +173,7 @@ let deletebox = document.querySelector('.deletebox')
 // 디렉토리 선택시 이동 또는 키워드 저장할 디렉토리선택
 function dirselect(dno,dname){
 	if ( kno == 0 ){ // 키워드의 디렉토리 선택창이 아니면 디렉토리이동
-		location.href = "/throw/dirView.jsp?dno="+dno;
+		location.href = "/throw/dirView.jsp?dno="+dno+"&kno=0";
 	}else{
 		document.querySelector('.selectdir').innerHTML = dname + '디렉토리 선택'
 		selectdirno = dno; 
@@ -210,6 +210,7 @@ function keydownEnter(){
 			url : "/throw/directories",
 			method : "put" ,
 			data : {"dname":dname , "dno":dno},
+			async : false ,
 			success : (r)=>{
 				console.log('통신')
 				console.log(r)
