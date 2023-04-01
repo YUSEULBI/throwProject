@@ -1,9 +1,9 @@
 
-
+// 키워드 생성 , 수정페이지
 //kno
 let kno = document.querySelector('.kno').value;
 
-
+// 키워드 수정시 키워드 불러오기
 if ( kno > 0 ){ // 키워드 수정
 	$.ajax({
 		url : "/throw/keyword" ,
@@ -20,15 +20,45 @@ if ( kno > 0 ){ // 키워드 수정
 console.log("kno : "+kno)	
 
 
+// 키워드 입력길이체크
+function keywordwrite(){
+	let keyword = document.querySelector('.keyword').value
+	console.log('입력값문자길이 : '+keyword.length)
+	let inputdiv = document.querySelector('.inputdiv');
+	
+	
+	console.log(keyword.length < 5)
+	if ( keyword.length < 3 ){ //  1 , 2
+		inputdiv.style.width = `35%`;
+	}else if( keyword.length < 5 ){ // 3 , 4
+		inputdiv.style.width = `${keyword.length}5%`;
+	}else if( keyword.length < 7 ){ // 5 , 6
+		inputdiv.style.width = keyword.length*10+'%';
+	}else if(keyword.length == 7){ 
+	inputdiv.style.width = (keyword.length*10-10)+'%';	
+	}else if(keyword.length < 10){ 
+		inputdiv.style.width = (keyword.length*10-20)+'%';	
+	}else if(keyword.length == 10){ 
+		inputdiv.style.width = (keyword.length*10-30)+'%';	
+	}else{  
+		inputdiv.style.width = (keyword.length*10-40)+'%';		
+	}
+	
+	console.log('width = '+inputdiv.style.width)
+	
+	
+}
+
+
 
 function swipeup(){
 	console.log("위로swipe");
-	let keyword = document.querySelector('.dname').value
+	let keyword = document.querySelector('.keyword').value
 	if( keyword == '' ){
 		location.href="/throw/keywords.jsp"
 	}else{
 		if ( kno == 0 ){ // 키워드 생성
-			addKeyword();
+			addKeyword(keyword);
 			location.href="/throw/keywords.jsp"
 		}else{
 			// 키워드수정
@@ -53,9 +83,10 @@ function longdrag(){
 
 // enter
 function keydownEnter(){
+	let keyword = document.querySelector('.keyword').value
 	if ( kno == 0 ){ // 키워드생성
 		
-		if ( addKeyword() ){//키워드생성
+		if ( addKeyword(keyword) ){//키워드생성
 			// 디렉토리에 넣기 페이지로
 			console.log("키워드 추가후 이동전 kno : "+kno)
 			location.href="/throw/dirView.jsp?dno=0&kno="+kno;
@@ -63,8 +94,7 @@ function keydownEnter(){
 	}else{
 		
 		console.log( '키워드수정성공했는지' )
-		console.log( updateKeyword() )
-		if ( updateKeyword() ){//키워드수정
+		if ( updateKeyword(keyword) ){//키워드수정
 				// 디렉토리에 넣기 페이지로
 				console.log("키워드 수정후 이동전 kno : "+kno)
 				location.href="/throw/dirView.jsp?dno=0&kno="+kno;
@@ -75,9 +105,9 @@ function keydownEnter(){
 
 
 // 키워드추가 
-function addKeyword(){
+function addKeyword(keyword){
 	
-	let keyword = document.querySelector('.dname').value
+	
 	let result = ''
 		$.ajax({
 			url : "/throw/keyword" ,

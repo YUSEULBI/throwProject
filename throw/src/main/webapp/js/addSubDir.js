@@ -5,29 +5,26 @@ console.log('dno : '+dno)
 //자동포커스
 document.querySelector('.dname').focus();
 
-document.addEventListener("keydown" , (e)=>{
-	console.log('이벤트리스너 함수내 dno :'+dno)
-	console.log(e.keyCode)
-	if ( e.keyCode == 13 ){
-		console.log('enter를 누름')
+
+function keydownEnter(){
+	console.log('enter를 누름')
 		let dname = document.querySelector('.dname').value;
 		console.log('dname : ' + dname)
 		
 		$.ajax({
-			url : "/throw/directories/sub",
+			url : "/throw//directories",
 			method : "post" ,
 			data : {"dno":dno ,"dname":dname},
 			success : (r)=>{
 				console.log('통신')
 				console.log(r)
 				if (r=='true'){
-					console.log('서브디렉토리추가성공')
+					console.log('디렉토리추가성공')
 					document.querySelector('.dname').value = '';
-					location.href = "/throw/dirView.jsp?dno="+dno;
+					location.href = "/throw/dirView.jsp?dno="+dno+"&kno=0";
 				}else{
-					console.log('서브디렉토리추가실패')
+					console.log('디렉토리추가실패')
 				}
 			}
 		})
-	}
-})
+}

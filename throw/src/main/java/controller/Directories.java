@@ -63,9 +63,9 @@ public class Directories extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String dname = request.getParameter("dname");
-		System.out.println("dname : "+dname);
-		boolean result = DirectoryDao.getInstance().setDirectory(dname);
+		int dno = Integer.parseInt(request.getParameter("dno")); System.out.println("dno : "+dno);
+		String dname = request.getParameter("dname");	System.out.println("dname : "+dname);
+		boolean result = DirectoryDao.getInstance().setDir(dno, dname);
 		response.getWriter().print(result);
 		
 	}

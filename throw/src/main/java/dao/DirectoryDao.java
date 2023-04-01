@@ -10,18 +10,7 @@ public class DirectoryDao extends Dao {
 	private DirectoryDao() {	}
 	public static DirectoryDao getInstance() {return dao;}
 	
-	//최상위폴더에 저장
-	public boolean setDirectory( String dname ) {
-		String sql = "insert into directories( dname ) values( ? );";
-		try {
-			ps = con.prepareStatement(sql);
-			ps.setString(1, dname);
-			ps.executeUpdate();
-			return true;
-		} catch (Exception e) {System.out.println(e);		}
-		return false;
-	}
-	
+
 	// 선택한 dno 정보 구하기
 	public DirDto getDirdto ( int dno ) {
 		String sql = "select * from directories where dno = "+dno;
@@ -63,13 +52,13 @@ public class DirectoryDao extends Dao {
 		return list;
 	}
 	
-	// subDirectories 추가
-	public boolean setSubDir( int dno , String dname) {
+	// Directories 추가
+	public boolean setDir( int dno , String dname) {
 		String sql = "";
-		if ( dno == 0 ) {
+		if ( dno == 0 ) { // 최상위폴더
 			sql = "insert into directories(dname ) "
 					+ "values('"+dname+"' );";
-		}else {
+		}else { // 하위폴더
 			sql = "insert into directories(dname , parent_dno ) "
 				+ "values('"+dname+"' , "+dno+");";
 		}

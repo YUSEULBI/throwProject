@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-	<link href="/throw/css/directory.css" rel="stylesheet">
+
 	<link href="/throw/css/addkeyword.css" rel="stylesheet">
 </head>
 <body>
@@ -15,10 +15,14 @@
 	%>
 	<input type="hidden" class="kno" value="<%=kno%>">
 	<div class="wrap">
-		<div class="dnamediv">
-<!-- 			<div class="movekeyword"> -->
-				<input class="dname movekeyword" type="text" placeholder="입력하세요">
-<!-- 			</div> -->
+		<div class="keryworddiv">
+				<div class="inputdiv">
+					<div class="mark">“</div>
+					<input onkeyup="keywordwrite()" class="keyword movekeyword" type="text" placeholder="입력하세요">
+<!-- 					<textarea onkeyup="keywordwrite()" class="keyword movekeyword" rows="1" placeholder="입력하세요"></textarea> -->
+					<div class="mark">”</div>
+				</div>
+
 		</div>
 	</div>
 	

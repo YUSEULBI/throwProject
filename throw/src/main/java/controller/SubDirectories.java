@@ -58,7 +58,7 @@ public class SubDirectories extends HttpServlet {
 		int dno = Integer.parseInt(request.getParameter("dno")); System.out.println("dno : "+dno);
 		String dname = request.getParameter("dname"); System.out.println("dname : "+dname);
 		
-		boolean result = DirectoryDao.getInstance().setSubDir(dno, dname);
+		boolean result = DirectoryDao.getInstance().setDir(dno, dname);
 		response.getWriter().print(result);
 		
 		
