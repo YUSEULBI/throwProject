@@ -89,14 +89,24 @@ function dirPrint(){
 			// 하위디렉토리 출력 -----------------------------------------------------
 			html = ''
 			r.forEach((o,i)=>{
+				//임시 디렉토리 색깔 -> DB처리해야함
+				let dirimg = '';
+				console.log("(i+1)%1 : "+(i+1)%1)
+				if( (i+1)/1 == 1 ){ dirimg = '01'
+				}else if( (i+1)/2 == 1 ){ dirimg = '02'
+				}else if( (i+1)/3 == 1 ){ dirimg = '03'
+				}else if( (i+1)/4 == 1 ){ dirimg = '04'
+				}else if( (i+1)/5 == 1 ){ dirimg = '05'
+				}else if( (i+1)/6 == 1 ){ dirimg = '06'
+				}else if( (i+1)/7 == 1 ){ dirimg = '07' }
+				console.log("dirimg : "+dirimg)
+				
 				html +=`
 						<div class="onebox">
-							<div class="onecontent">
-								<div class="onedirdeco"> <div class="dirdeco"></div>	</div>
-								<div class="ondirbox">
-									<div class="dirbox">
-										<div onclick="dirselect('${o.dno}','${o.dname}')" class="dirname , dir${o.dno}">${o.dname}</div>
-									</div>
+							<div class="onecontent" onclick="dirselect('${o.dno}','${o.dname}')">
+								<img class="keyword%{o.kno}" src="/throw/img/directory/directory${dirimg}.png">
+								<div class="dirnamediv">
+									<div class="dirname , dir${o.dno}">${o.dname}</div>
 								</div>
 							</div>
 						</div>
@@ -138,14 +148,9 @@ function getKeyword(){
 						<div class="onebox">
 							<div class="onecontent">
 								<div class="onekeywordsort"  onclick="keywordClick(${o.kno})">
-									<div class="keywordtextbox">
-										<div class="textdeco">
-											<div class="texttopdeco , texttopdeco${o.kno}"></div>
-											<div class="righttriangle , righttriangle${o.kno}"></div>
-										</div>
-										<div class="textbox , textbox${o.kno}">
-											<div class="keywordtext" >${o.kcontent}	</div>
-										</div>
+									<img class="keyword${o.kno}" src="/throw/img/keyword.png">
+									<div class="keywordtextdiv">
+										<div class="keywordtext">${o.kcontent}</div>
 									</div>
 								</div>
 							</div>

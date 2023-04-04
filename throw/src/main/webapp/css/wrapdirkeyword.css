@@ -118,6 +118,7 @@ input:focus {outline:none;}
 .onecontent{
 	width: 60%;
 	height: 65%;
+	position: relative;
 }
 
 /*---------키워드----------*/
@@ -128,98 +129,120 @@ input:focus {outline:none;}
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	position: relative;
 }
 
-.keywordtextbox{ /*키워드 박스크기*/
-	width: 95%;
-	height: 80%;
+.keywordtextdiv{
+ 	position: absolute;
+	z-index: 999;
+	top:30px;
+	left:30px;
+	width: 80%;
+	height: 75%;
 }
-.textdeco{
-	width: 100%;
-	height: 22%;
-	display: flex;
-}
-.texttopdeco{
+.keywordtext{
+	color: black;
 	width:100%;
 	height:100%;
-	border-left: 5px solid white;
-	border-top: 5px solid white;
-}
-.righttriangle{
-	border-bottom: 40px solid white;
- 	border-left: 0px solid transparent;
- 	border-right: 40px solid transparent;
-}
-.textbox{
-	width: 96%;
-	height: 80%;
-	border: 5px solid white;
-	border-top: none;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-/*--------짧은텍스트 키워드----------*/
-
-.keywordtext{
-	width:85%;
-	height:70%;
 	font-size: 40px;
 	overflow:hidden;
 	text-overflow: ellipsis;
 }
 
+
+/* .keywordtextbox{ 키워드 박스크기 */
+/* 	width: 95%; */
+/* 	height: 80%; */
+/* } */
+/* .textdeco{ */
+/* 	width: 100%; */
+/* 	height: 22%; */
+/* 	display: flex; */
+/* } */
+/* .texttopdeco{ */
+/* 	width:100%; */
+/* 	height:100%; */
+/* 	border-left: 5px solid white; */
+/* 	border-top: 5px solid white; */
+/* } */
+/* .righttriangle{ */
+/* 	border-bottom: 40px solid white; */
+/*  	border-left: 0px solid transparent; */
+/*  	border-right: 40px solid transparent; */
+/* } */
+/* .textbox{ */
+/* 	width: 96%; */
+/* 	height: 80%; */
+/* 	border: 5px solid white; */
+/* 	border-top: none; */
+/* 	display: flex; */
+/* 	justify-content: center; */
+/* 	align-items: center; */
+/* } */
+
+
+
 /*--------롱텍스트 키워드----------*/
-.keywordlongtext{
-	width:85%;
-	height:80%;
-	font-size: 30px;
-	overflow:hidden;
-	text-overflow: ellipsis;
-}
+/* .keywordlongtext{ */
+/* 	width:85%; */
+/* 	height:80%; */
+/* 	font-size: 30px; */
+/* 	overflow:hidden; */
+/* 	text-overflow: ellipsis; */
+/* } */
+
+
 
 /*---------디렉토리----------*/
-.onedir{
-	width: 60%;
-	height: 100%;
-}
+/* .onedir{ */
+/* 	width: 60%; */
+/* 	height: 100%; */
+/* } */
 
-.onedirdeco{
-	width : 100%;
-	height: 15%;
-}
-.ondirbox{
-	width: 100%; 
-	height: 80%;
-	display: flex;
-	justify-content: center;
-}
-.dirdeco{
-	width: 30%;
-	height: 100%;
-	border: 5px solid white;
-	border-bottom:none;
-	border-radius: 20px 20px 0 0;
-}
-.dirbox{
-	width: 100%;
-	height: 100%;
-	border: 5px solid white;
-	border-radius: 0 20px 20px 20px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+/* .onedirdeco{ */
+/* 	width : 100%; */
+/* 	height: 15%; */
+/* } */
+/* .ondirbox{ */
+/* 	width: 100%;  */
+/* 	height: 80%; */
+/* 	display: flex; */
+/* 	justify-content: center; */
+/* } */
+/* .dirdeco{ */
+/* 	width: 30%; */
+/* 	height: 100%; */
+/* 	border: 5px solid white; */
+/* 	border-bottom:none; */
+/* 	border-radius: 20px 20px 0 0; */
+/* } */
+/* .dirbox{ */
+/* 	width: 100%; */
+/* 	height: 100%; */
+/* 	border: 5px solid white; */
+/* 	border-radius: 0 20px 20px 20px; */
+/* 	display: flex; */
+/* 	justify-content: center; */
+/* 	align-items: center; */
+/* } */
+
+.dirnamediv{
+	width: 80%;
+	height: 60%;
+	position: absolute;
+	z-index: 999;	
+	top:50px;
+	left:26px;
 }
 
 .dirname{
-	width: 75%;
-	height: 60%;
-	display: inline-block;
+	width: 100%;
+	height: 100%;
 	font-size: 40px;
 	text-align: center;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	color:black;
 }
 
 /*---------추가버튼------------*/

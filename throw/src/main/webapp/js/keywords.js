@@ -32,22 +32,14 @@ function getTodayKeyword(){
 			console.log(r)
 			let html = ''
 			r.forEach((o,i)=>{
+
 				knolist.push(o.kno);
 				html += `
 						<div class="onebox">
 							<div class="onecontent">
 								<div class="onekeywordsort" onclick="keywordClick(${o.kno})">
-									<div class="keywordtextbox">
-										<div class="textdeco textdeco${o.kno}">
-											<div class="texttopdeco texttopdeco${o.kno}"></div>
-											<div class="righttriangle righttriangle${o.kno}"></div>
-										</div>
-										<div class="textbox textbox${o.kno}">
-											<div class="keywordtext" >
-												${o.kcontent}
-											</div>
-										</div>
-									</div>
+									<img class="keyword${o.kno}" src="/throw/img/keyword.png">
+									<div class="keywordtext keywordtext%{o.kno}">${o.kcontent}</div>
 								</div>
 							</div>
 						</div>
